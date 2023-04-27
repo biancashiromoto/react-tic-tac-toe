@@ -4,7 +4,7 @@ import './GridUnit.css';
 class GridUnit extends Component {
   render() {
     const { index, grids, onClick, playerSymbol } = this.props;
-    // console.log(index);
+    console.log(index);
     return (
       <div
         className="grid-unit"
