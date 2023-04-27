@@ -12,5 +12,4 @@ export const changeGrids = (grids, index, playerSymbol) => {
   newGridsArray[index] = playerSymbol;
   console.log(newGridsArray);
   return newGridsArray;
-  
 }
