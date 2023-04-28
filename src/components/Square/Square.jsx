@@ -8,11 +8,10 @@ class Square extends Component {
       index,
       grids,
       playerSymbol,
-      changePlayer,
       changeClickedState,
       clicked,
-      checkForWinners,
-      checkForTie,
+      checkMove,
+      isGameOver,
     } = this.props;
     return (
       <div
@@ -21,10 +20,7 @@ class Square extends Component {
           if (!clicked) {
             changeClickedState(index);
             handleSquareClick(index, grids, playerSymbol);
-            checkForWinners(grids);
-            checkForTie();
-            changePlayer();
-            
+            checkMove(grids);
           }
         } }
         disabled={ clicked }

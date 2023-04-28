@@ -11,7 +11,7 @@ class App extends Component {
     playerSymbol: 'O',
     isGameOver: false,
     gameOverMessage: '',
-    isDisabled: false,
+    disabled: false,
   };
 
   changePlayer = () => {
@@ -27,11 +27,10 @@ class App extends Component {
     this.setState({
       grids: handleClearGridButtonClick(grids),
       gameOverMessage: '',
-      isDisabled: false,
     });
   };
 
-  checkForWinners = (grids) => {
+  checkMove = (grids) => {
     const { isPlayer1Turn } = this.state;
     const winningOptions = [  
       [0, 1, 2],
@@ -49,23 +48,24 @@ class App extends Component {
     for (let index = 0; index < winningOptions.length; index += 1) {
       const [x, y, z] = winningOptions[index];
       if (grids[x] && grids[x] === grids[y] && grids[x] === grids[z]) {
-        console.log(true);
         if (isPlayer1Turn) {
           this.setState({
             gameOverMessage: 'Player 1 wins!',
+            grids: handleClearGridButtonClick(grids),
+            isGameOver: true,
           })
         }
         if (!isPlayer1Turn) {
           this.setState({
             gameOverMessage: 'Player 2 wins!',
+            grids: handleClearGridButtonClick(grids),
+            isGameOver: true,
           });
         }
-        this.setState({
-          isGameOver: true,
-          grids: handleClearGridButtonClick(grids),
-        });
       }
     }
+    this.checkForTie();
+    this.changePlayer();
   };
 
   checkForTie = () => {
@@ -74,8 +74,15 @@ class App extends Component {
       this.setState({
         isGameOver: true,
         gameOverMessage: 'Tie!',
+        grids: handleClearGridButtonClick(grids),
       });
     }
+  };
+
+  disableGrids = () => {
+    this.setState({
+      disabled: true,
+    });
   };
 
   render() {
@@ -86,7 +93,7 @@ class App extends Component {
       gameOverMessage,
       playerSymbol,
       isPlayer1Turn,
-      isDisabled,
+      disabled,
     } = this.state;
 
     return (
@@ -99,10 +106,8 @@ class App extends Component {
           isGameOver={ isGameOver }
           playerSymbol={ playerSymbol }
           isPlayer1Turn={ isPlayer1Turn }
-          changePlayer={ this.changePlayer }
-          checkForWinners={ this.checkForWinners }
-          isDisabled={ isDisabled }
-          checkForTie={ this.checkForTie }
+          checkMove={ this.checkMove }
+          disabled={ disabled }
         />
         <Button
           grids={ grids }
