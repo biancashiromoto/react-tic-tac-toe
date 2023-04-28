@@ -10,7 +10,8 @@ class App extends Component {
     isPlayer1Turn: true,
     playerSymbol: 'O',
     isGameOver: false,
-    winnerMessage: '',
+    gameOverMessage: '',
+    isDisabled: false,
   };
 
   changePlayer = () => {
@@ -25,6 +26,8 @@ class App extends Component {
     const { grids } = this.state;
     this.setState({
       grids: handleClearGridButtonClick(grids),
+      gameOverMessage: '',
+      isDisabled: false,
     });
   };
 
@@ -49,21 +52,30 @@ class App extends Component {
         console.log(true);
         if (isPlayer1Turn) {
           this.setState({
-            winnerMessage: 'Player 1 wins!',
+            gameOverMessage: 'Player 1 wins!',
           })
         }
         if (!isPlayer1Turn) {
           this.setState({
-            winnerMessage: 'Player 2 wins!',
+            gameOverMessage: 'Player 2 wins!',
           });
         }
         this.setState({
           isGameOver: true,
-          grids: handleClearGridButtonClick(grids)
+          grids: handleClearGridButtonClick(grids),
         });
       }
     }
-    console.log(false);
+  };
+
+  checkForTie = () => {
+    const { grids } = this.state;
+    if (grids.every((grid) => grid !== '')) {
+      this.setState({
+        isGameOver: true,
+        gameOverMessage: 'Tie!',
+      });
+    }
   };
 
   render() {
@@ -71,9 +83,10 @@ class App extends Component {
       grids,
       players,
       isGameOver,
-      winnerMessage,
+      gameOverMessage,
       playerSymbol,
       isPlayer1Turn,
+      isDisabled,
     } = this.state;
 
     return (
@@ -88,6 +101,8 @@ class App extends Component {
           isPlayer1Turn={ isPlayer1Turn }
           changePlayer={ this.changePlayer }
           checkForWinners={ this.checkForWinners }
+          isDisabled={ isDisabled }
+          checkForTie={ this.checkForTie }
         />
         <Button
           grids={ grids }
@@ -95,7 +110,7 @@ class App extends Component {
           buttonValue="Clear grid"
           clearGrids={ this.clearGrids }
         />
-        <span>{winnerMessage}</span>
+        <span>{gameOverMessage}</span>
       </div>
     );
   }
