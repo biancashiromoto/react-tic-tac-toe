@@ -93,7 +93,7 @@ class App extends Component {
         grids: handleClearGridButtonClick(grids),
       });
     }
-    this.restartGame('5000');
+    this.restartGame('7500');
   };
 
   render() {
@@ -110,7 +110,10 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Tic-tac-toe</h1>
-        {(isGameOver) ? '' : <h3>{(isPlayer1Turn) ? 'Player 1' : 'Player 2'}</h3>}
+        <div
+          className="player-display">
+            {(isGameOver) ? '' : <h3>{(isPlayer1Turn) ? 'Player 1' : 'Player 2'}</h3>}
+          </div>
         <Board
           handleSquareClick={ handleSquareClick }
           grids={ grids }

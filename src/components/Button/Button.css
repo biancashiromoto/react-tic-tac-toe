@@ -3,8 +3,8 @@
   border: none;
   border-radius: 25px;
   color: var(--white);
-  font-family: 'Courier New', Courier, monospace;
-  padding: 10px 25px;
+  font: 400 24px var(--chewy);
+  padding: 10px 30px;
   transition: 300ms;
 }
 

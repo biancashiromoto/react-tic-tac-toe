@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Boogaloo&family=Chewy&family=Elsie:wght@900&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -10,6 +12,10 @@
   --red: #a14646;
   --square-hover: #18637a;
   --white: #e5e5e5;
+
+  --bogaloo: 'Boogaloo', cursive;
+  --chewy: 'Chewy', cursive;
+  --elsie: 'Elsie', cursive;
 }
 
 .App {
@@ -19,3 +25,41 @@
   text-align: center;
 }
 
+h1 {
+  align-items: center;
+  display: flex;
+  font: 400 40px var(--chewy);
+  gap: 15px;
+  justify-content: center;
+  padding-top: 35px;
+  text-transform: uppercase;
+}
+
+h1::before {
+  content: '';
+  background-color: var(--white);
+  height: 3px;
+  position: relative;
+  top: 2.5px;
+  width: 15%;
+}
+
+h1::after {
+  content: '';
+  background-color: var(--white);
+  height: 3px;
+  position: relative;
+  top: 2.5px;
+  width: 15%;
+}
+
+h3 {
+  font: 400 28px var(--elsie);
+}
+
+.player-display {
+  position: absolute;
+  left: 50%;
+  margin: 20px auto;
+  transform: translateX(-50%);
+}
