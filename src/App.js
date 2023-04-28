@@ -28,6 +28,7 @@ class App extends Component {
       grids: handleClearGridButtonClick(grids),
       isGameOver: true,
       gameOverMessage: '',
+      isPlayer1Turn: true,
     });
   };
 
@@ -94,6 +95,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Tic-tac-toe</h1>
+        {(isGameOver) ? '' : <h3>{(isPlayer1Turn) ? 'Player 1' : 'Player 2'}</h3>}
         <Board
           handleSquareClick={ handleSquareClick }
           grids={ grids }
@@ -110,7 +112,7 @@ class App extends Component {
           buttonValue="Clear grid"
           clearGrids={ this.clearGrids }
         />
-        <span>{gameOverMessage}</span>
+        <h2>{gameOverMessage}</h2>
       </div>
     );
   }
