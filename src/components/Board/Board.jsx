@@ -20,7 +20,6 @@ class Board extends Component {
     }
   };
 
-
   changeClickedState = (index) => {
     const { squares } = this.state;
     squares[index] = true;
@@ -35,8 +34,6 @@ class Board extends Component {
       playerSymbol,
       isPlayer1Turn,
       checkMove,
-      disabled,
-      isGameOver,
     } = this.props;
     const { squares } = this.state;
     const squaresArray = [];
@@ -53,12 +50,9 @@ class Board extends Component {
           clicked={ squares[index] }
           changeClickedState={ () => this.changeClickedState(index) }
           checkMove={ checkMove }
-          disabled={ disabled }
-          isGameOver={ isGameOver }
         />
       )
     };
-    console.log(isGameOver)
 
     return (
       <div

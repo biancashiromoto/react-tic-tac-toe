@@ -26,6 +26,7 @@ class App extends Component {
     const { grids } = this.state;
     this.setState({
       grids: handleClearGridButtonClick(grids),
+      isGameOver: true,
       gameOverMessage: '',
     });
   };
@@ -77,12 +78,6 @@ class App extends Component {
         grids: handleClearGridButtonClick(grids),
       });
     }
-  };
-
-  disableGrids = () => {
-    this.setState({
-      disabled: true,
-    });
   };
 
   render() {

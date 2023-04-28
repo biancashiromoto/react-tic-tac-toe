@@ -11,7 +11,6 @@ class Square extends Component {
       changeClickedState,
       clicked,
       checkMove,
-      isGameOver,
     } = this.props;
     return (
       <div
