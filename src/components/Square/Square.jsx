@@ -8,15 +8,23 @@ class Square extends Component {
       index,
       grids,
       playerSymbol,
+      changePlayer,
+      changeClickedState,
+      clicked,
     } = this.props;
     return (
       <div
         className="square"
         onClick={ () => {
-          handleSquareClick(index, grids, playerSymbol);
-          
+          if (!clicked) {
+            changeClickedState(index);
+            handleSquareClick(index, grids, playerSymbol);
+            changePlayer();
+          }
         } }
+        disabled={ clicked }
       >
+        {grids[index] ? grids[index] : '' }
       </div>
     )
   }

@@ -7,12 +7,18 @@ import { handleClearGridButtonClick, handleSquareClick } from './services/gamepl
 class App extends Component {
   state = {
     grids: ['', '', '', '', '', '', '', '', ''],
-    players: {
-      isPlayer1Turn: true,
-      playerSymbol: 'O',
-    },
+    isPlayer1Turn: true,
+    playerSymbol: 'O',
     isGameOver: false,
     winnerMessage: '',
+  };
+
+  changePlayer = () => {
+    const { isPlayer1Turn, playerSymbol } = this.state;
+    this.setState({
+      isPlayer1Turn: !isPlayer1Turn,
+      playerSymbol: playerSymbol === 'O' ? 'X' : 'O',
+    });
   };
 
   render() {
@@ -21,9 +27,8 @@ class App extends Component {
       players,
       isGameOver,
       winnerMessage,
-      players: {
-        playerSymbol,
-      },
+      playerSymbol,
+      isPlayer1Turn,
     } = this.state;
 
     return (
@@ -35,11 +40,12 @@ class App extends Component {
           players={ players }
           isGameOver={ isGameOver }
           playerSymbol={ playerSymbol }
+          isPlayer1Turn={ isPlayer1Turn }
+          changePlayer={ this.changePlayer }
         />
         <Button
-          onClick={ () => 
-            handleClearGridButtonClick(grids)
-          }
+          grids={ grids }
+          handleClearGridButtonClick={ handleClearGridButtonClick }
           buttonValue="Clear grid"
         />
         {winnerMessage}

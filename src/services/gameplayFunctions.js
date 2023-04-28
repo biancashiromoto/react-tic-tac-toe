@@ -1,8 +1,9 @@
 export const handleClearGridButtonClick = (grids) => {
-  console.log('handleClearGridButtonClick');
+  grids.fill('');
+  return grids;
 };
 
 export const handleSquareClick = (index, grids, playerSymbol) => {
   grids[index] = playerSymbol;
-  console.log(grids);
+  return grids;
 };

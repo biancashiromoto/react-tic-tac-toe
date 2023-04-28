@@ -3,11 +3,11 @@ import { handleClearGridButtonClick } from '../../services/gameplayFunctions';
 
 class Button extends Component {
   render() {
-    const { buttonValue } = this.props;
+    const { buttonValue, grids } = this.props;
     return (
       <button
         onClick={
-          () => handleClearGridButtonClick()
+          () => handleClearGridButtonClick(grids)
         }
       >
         {buttonValue}
