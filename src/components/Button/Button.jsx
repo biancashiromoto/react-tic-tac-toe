@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { handleClearGridButtonClick } from '../../services/gameplayFunctions';
 
 class Button extends Component {
   render() {
-    const { buttonValue, grids } = this.props;
+    const { buttonValue, grids, clearGrids } = this.props;
     return (
       <button
-        onClick={
-          () => handleClearGridButtonClick(grids)
-        }
+        onClick={ () => {
+          clearGrids();
+        }}
+        disabled={ (grids.every((grid) => grid === '')) }
       >
         {buttonValue}
       </button>

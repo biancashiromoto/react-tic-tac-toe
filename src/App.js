@@ -21,6 +21,13 @@ class App extends Component {
     });
   };
 
+  clearGrids = () => {
+    const { grids } = this.state;
+    this.setState({
+      grids: handleClearGridButtonClick(grids),
+    });
+  };
+
   render() {
     const {
       grids,
@@ -47,6 +54,7 @@ class App extends Component {
           grids={ grids }
           handleClearGridButtonClick={ handleClearGridButtonClick }
           buttonValue="Clear grid"
+          clearGrids={ this.clearGrids }
         />
         {winnerMessage}
       </div>
