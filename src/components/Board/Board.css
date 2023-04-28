@@ -1,6 +1,7 @@
 .board {
   display: grid;
   grid-template-columns: repeat(3, auto);
-  margin: 0 auto;
+  margin: 35px auto;
+  position: relative;
   width: min-content;
 }

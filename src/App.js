@@ -31,7 +31,7 @@ class App extends Component {
       gameOverMessage: '',
       isPlayer1Turn: true,
     });
-    this.restartGame(500);
+    this.restartGame('500');
   };
 
   checkMove = (grids) => {
@@ -93,7 +93,7 @@ class App extends Component {
         grids: handleClearGridButtonClick(grids),
       });
     }
-    this.restartGame('7500');
+    this.restartGame('5000');
   };
 
   render() {
@@ -124,7 +124,7 @@ class App extends Component {
         <Button
           grids={ grids }
           handleClearGridButtonClick={ handleClearGridButtonClick }
-          buttonValue="Clear grid"
+          buttonValue="Clear grids"
           clearGrids={ this.clearGrids }
         />
         {isGameOver ? <h2>{gameOverMessage}</h2> : ''}

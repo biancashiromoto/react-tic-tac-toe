@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { handleSquareClick } from '../../services/gameplayFunctions';
+import player1Symbol from '../../assets/img/o-item.png';
+import player2Symbol from '../../assets/img/x-item.png';
 import './Square.css';
 
 class Square extends Component {
@@ -24,7 +26,13 @@ class Square extends Component {
         } }
         disabled={ clicked }
       >
-        {grids[index] ? grids[index] : '' }
+        {grids[index] && (
+          <img
+            className="player-symbol"
+            src={grids[index] === 'X' ? player2Symbol : player1Symbol}
+            alt={grids[index]}
+          />
+        )}
       </div>
     )
   }

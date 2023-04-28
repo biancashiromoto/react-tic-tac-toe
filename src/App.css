@@ -1,4 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+
+  --background-color: #05313f;
+  --green: #2fa042;
+  --red: #a14646;
+  --square-hover: #18637a;
+  --white: #e5e5e5;
+}
+
 .App {
+  background-color: var(--background-color);
+  color: var(--white);
+  height: 100vh;
   text-align: center;
 }
 
