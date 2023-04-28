@@ -25,6 +25,7 @@ class Board extends Component {
       playerSymbol,
       changePlayer,
       isPlayer1Turn,
+      checkForWinners,
     } = this.props;
     const { squares } = this.state;
     const squaresArray = [];
@@ -41,7 +42,7 @@ class Board extends Component {
           isPlayer1Turn={ isPlayer1Turn }
           clicked={ squares[index] }
           changeClickedState={ () => this.changeClickedState(index) }
-          
+          checkForWinners={ checkForWinners }
         />
       )
     };
