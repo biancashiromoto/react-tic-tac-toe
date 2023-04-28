@@ -12,6 +12,7 @@ class App extends Component {
     isGameOver: false,
     gameOverMessage: '',
     disabled: false,
+    countdown: '',
   };
 
   changePlayer = () => {
@@ -30,10 +31,11 @@ class App extends Component {
       gameOverMessage: '',
       isPlayer1Turn: true,
     });
+    this.restartGame(500);
   };
 
   checkMove = (grids) => {
-    const { isPlayer1Turn } = this.state;
+    const { isPlayer1Turn, isGameOver } = this.state;
     const winningOptions = [  
       [0, 1, 2],
       [3, 4, 5],
@@ -66,9 +68,21 @@ class App extends Component {
         }
       }
     }
+    if (isGameOver) {
+      this.restartGame('7500');
+    }
     this.checkForTie();
     this.changePlayer();
   };
+
+  restartGame = (time = 1500) => {
+    setTimeout(() => {
+      this.setState({
+        isGameOver: false,
+        isPlayer1Turn: true,
+      });
+    }, time);
+  }
 
   checkForTie = () => {
     const { grids } = this.state;
@@ -79,6 +93,7 @@ class App extends Component {
         grids: handleClearGridButtonClick(grids),
       });
     }
+    this.restartGame('7500');
   };
 
   render() {
@@ -112,7 +127,7 @@ class App extends Component {
           buttonValue="Clear grid"
           clearGrids={ this.clearGrids }
         />
-        <h2>{gameOverMessage}</h2>
+        {isGameOver ? <h2>{gameOverMessage}</h2> : ''}
       </div>
     );
   }
