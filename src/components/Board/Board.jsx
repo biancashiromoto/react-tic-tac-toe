@@ -35,20 +35,16 @@ class Board extends Component {
       isPlayer1Turn,
       checkMove,
     } = this.props;
-    const { squares } = this.state;
     const squaresArray = [];
 
     for ( let index = 0; index < 9; index += 1) {
       squaresArray.push(
         <Square
-          handleSquareClick={ handleSquareClick }
           key={ index }
           index={ index }
           grids={ grids }
           playerSymbol={ playerSymbol }
           isPlayer1Turn={ isPlayer1Turn }
-          clicked={ squares[index] }
-          changeClickedState={ () => this.changeClickedState(index) }
           checkMove={ checkMove }
         />
       )
