@@ -7,8 +7,15 @@ class MessageContainer extends Component {
     const {
       isPlayer1Turn,
       gameOverMessage,
+      isTie,
     } = this.props;
-    const style = { backgroundColor: isPlayer1Turn ? 'var(--player2)' : 'var(--player1)'}
+    const style = {
+      backgroundColor: isTie
+      ? 'var(--tie)'
+    : ((isPlayer1Turn)
+      ? 'var(--player2)'
+      : 'var(--player1)'),
+    }
     return (
       <div
         className="message-container"

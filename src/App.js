@@ -14,6 +14,7 @@ class App extends Component {
     isGameOver: false,
     gameOverMessage: '',
     disabled: false,
+    isTie: false,
   };
 
   componentDidUpdate() {
@@ -48,6 +49,7 @@ class App extends Component {
       if (grids[x] && grids[x] === grids[y] && grids[x] === grids[z]) {
         this.setState({
           isGameOver: true,
+          isTie: false,
           gameOverMessage: isPlayer1Turn ? 'Player 1 wins!' : 'Player 2 wins!',
         });
       }
@@ -71,15 +73,13 @@ class App extends Component {
   }
 
   checkForTie = () => {
-    const { grids, isGameOver } = this.state;
+    const { grids } = this.state;
     if (grids.every((grid) => grid !== '')) {
       this.setState({
         isGameOver: true,
         gameOverMessage: 'Tie!',
+        isTie: true,
       });
-    }
-    if (isGameOver) {
-      this.restartGame();
     }
   };
 
@@ -91,6 +91,7 @@ class App extends Component {
       playerSymbol,
       isPlayer1Turn,
       disabled,
+      isTie,
     } = this.state;
 
     return (
@@ -118,6 +119,7 @@ class App extends Component {
           <MessageContainer
             gameOverMessage={ gameOverMessage }
             isPlayer1Turn={ isPlayer1Turn }
+            isTie={ isTie }
           />
         ) : ''}
       </div>
