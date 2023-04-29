@@ -96,9 +96,9 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Tic-tac-toe</h1>
-        <PlayerDisplay
+        {!isGameOver ? (<PlayerDisplay
           isPlayer1Turn={ isPlayer1Turn }
-        />
+        />) : ''}
         <Board
           handleSquareClick={ handleSquareClick }
           grids={ grids }
@@ -112,11 +112,13 @@ class App extends Component {
           grids={ grids }
           buttonValue="Restart"
           restartGame={ this.restartGame }
+          isGameOver={ isGameOver }
         />
         {isGameOver ? (
           <MessageContainer
-          gameOverMessage={ gameOverMessage }
-        />
+            gameOverMessage={ gameOverMessage }
+            isPlayer1Turn={ isPlayer1Turn }
+          />
         ) : ''}
       </div>
     );

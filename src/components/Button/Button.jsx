@@ -3,10 +3,15 @@ import './Button.css';
 
 class Button extends Component {
   render() {
-    const { buttonValue, grids, restartGame } = this.props;
+    const {
+      buttonValue,
+      grids,
+      restartGame,
+      isGameOver,
+    } = this.props;
     return (
       <button
-      className="clear-grid-button"
+      className={isGameOver ? 'pulse restart-game-button' : 'restart-game-button'}
         onClick={ () => {
           restartGame();
         }}
