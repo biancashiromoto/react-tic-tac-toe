@@ -59,8 +59,26 @@ h3 {
 }
 
 .player-display {
-  position: absolute;
+  align-items: center;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
   left: 50%;
   margin: 20px auto;
+  position: absolute;
   transform: translateX(-50%);
+}
+
+.player-img-display {
+  animation: fade-in 0.2s ease-in forwards;
+  width: 35px;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

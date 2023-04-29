@@ -3,6 +3,8 @@ import './App.css';
 import Board from './components/Board/Board';
 import Button from './components/Button/Button';
 import { handleClearGridButtonClick, handleSquareClick } from './services/gameplayFunctions';
+import player1Symbol from '../src/assets/img/o-item.png';
+import player2Symbol from '../src/assets/img/x-item.png';
 
 class App extends Component {
   state = {
@@ -20,7 +22,7 @@ class App extends Component {
     this.setState({
       isPlayer1Turn: !isPlayer1Turn,
       playerSymbol: playerSymbol === 'O' ? 'X' : 'O',
-    });
+    }, () => console.log(isPlayer1Turn, playerSymbol));
   };
 
   clearGrids = () => {
@@ -55,9 +57,13 @@ class App extends Component {
         if (isPlayer1Turn) {
           this.setState({
             gameOverMessage: 'Player 1 wins!',
-            grids: handleClearGridButtonClick(grids),
             isGameOver: true,
-          })
+          });
+          setTimeout(() => {
+            this.setState({
+              grids: handleClearGridButtonClick(grids),
+            })
+          }, 3500)
         }
         if (!isPlayer1Turn) {
           this.setState({
@@ -80,6 +86,7 @@ class App extends Component {
       this.setState({
         isGameOver: false,
         isPlayer1Turn: true,
+        playerSymbol: 'O',
       });
     }, time);
   }
@@ -110,10 +117,17 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Tic-tac-toe</h1>
+        {!isGameOver ? (
         <div
           className="player-display">
-            {(isGameOver) ? '' : <h3>{(isPlayer1Turn) ? 'Player 1' : 'Player 2'}</h3>}
+              <img
+              alt={(isPlayer1Turn) ? 'Player 1' : 'Player 2'}
+              className="player-img-display"
+              src={isPlayer1Turn ? player1Symbol : player2Symbol}
+              />
+              <h3>{(isPlayer1Turn) ? 'Player 1' : 'Player 2'}</h3>
           </div>
+        ) : ''}
         <Board
           handleSquareClick={ handleSquareClick }
           grids={ grids }
