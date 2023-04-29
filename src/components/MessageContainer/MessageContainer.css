@@ -1,6 +1,30 @@
 @import url('../../App.css');
 
 .message-container {
-  background-color: aqua;
-  font: 400 30px var(--elsie);
+  align-items: center;
+  animation: fade-in 0.5s ease-in forwards;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 180px;
+  justify-content: center;
+  left: 50%;
+  position: fixed;
+  transform: translateX(-50%);
+  transition: 250ms;
+  top: 220px;
+  opacity: 0;
+  width: 180px;
+}
+
+.message-container:hover {
+  left: 26%;
+  position: fixed;
+  top: 225px;
+  transform: scale(1.25, 1.25);
+}
+
+.message-container h2 {
+  font: 400 52px var(--londrina-solid);
 }

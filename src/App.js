@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Board from './components/Board/Board';
 import Button from './components/Button/Button';
-import { handleClearGridButtonClick, handleSquareClick } from './services/gameplayFunctions';
-import player1Symbol from '../src/assets/img/o-item.png';
-import player2Symbol from '../src/assets/img/x-item.png';
+import { handleSquareClick } from './services/gameplayFunctions';
 import MessageContainer from './components/MessageContainer/MessageContainer';
 import PlayerDisplay from './components/PlayerDisplay/PlayerDisplay';
 
@@ -16,30 +14,22 @@ class App extends Component {
     isGameOver: false,
     gameOverMessage: '',
     disabled: false,
-    countdown: '',
+  };
+
+  componentDidUpdate() {
+    console.log(this.state);
   };
 
   changePlayer = () => {
-    const { isPlayer1Turn, playerSymbol } = this.state;
-    this.setState({
-      isPlayer1Turn: !isPlayer1Turn,
-      playerSymbol: playerSymbol === 'O' ? 'X' : 'O',
-    }, () => console.log(isPlayer1Turn, playerSymbol));
-  };
-
-  clearGrids = () => {
-    const { grids } = this.state;
-    this.setState({
-      grids: handleClearGridButtonClick(grids),
-      isGameOver: true,
-      gameOverMessage: '',
-      isPlayer1Turn: true,
-    });
-    this.restartGame('500');
+    this.setState(prevState => ({
+      isPlayer1Turn: !prevState.isPlayer1Turn,
+      playerSymbol: prevState.isPlayer1Turn ? 'X' : 'O',
+    }))
   };
 
   checkMove = (grids) => {
     const { isPlayer1Turn, isGameOver } = this.state;
+    this.checkForTie();
     const winningOptions = [  
       [0, 1, 2],
       [3, 4, 5],
@@ -56,59 +46,46 @@ class App extends Component {
     for (let index = 0; index < winningOptions.length; index += 1) {
       const [x, y, z] = winningOptions[index];
       if (grids[x] && grids[x] === grids[y] && grids[x] === grids[z]) {
-        if (isPlayer1Turn) {
-          this.setState({
-            gameOverMessage: 'Player 1 wins!',
-            isGameOver: true,
-          });
-          setTimeout(() => {
-            this.setState({
-              grids: handleClearGridButtonClick(grids),
-            })
-          }, 3500)
-        }
-        if (!isPlayer1Turn) {
-          this.setState({
-            gameOverMessage: 'Player 2 wins!',
-            grids: handleClearGridButtonClick(grids),
-            isGameOver: true,
-          });
-        }
+        this.setState({
+          isGameOver: true,
+          gameOverMessage: isPlayer1Turn ? 'Player 1 wins!' : 'Player 2 wins!',
+        });
       }
     }
     if (isGameOver) {
-      this.restartGame('3000');
+      this.restartGame();
     }
-    this.checkForTie();
-    this.changePlayer();
+    if (!isGameOver) {
+      this.changePlayer();
+    }
   };
 
-  restartGame = (time = 1500) => {
-    setTimeout(() => {
+  restartGame = () => {
       this.setState({
         isGameOver: false,
         isPlayer1Turn: true,
         playerSymbol: 'O',
-      });
-    }, time);
+        grids: new Array(9).fill(''),
+        gameOverMessage: '',
+      }, () => console.log(this.state));
   }
 
   checkForTie = () => {
-    const { grids } = this.state;
+    const { grids, isGameOver } = this.state;
     if (grids.every((grid) => grid !== '')) {
       this.setState({
         isGameOver: true,
         gameOverMessage: 'Tie!',
-        grids: handleClearGridButtonClick(grids),
       });
     }
-    this.restartGame('7500');
+    if (isGameOver) {
+      this.restartGame();
+    }
   };
 
   render() {
     const {
       grids,
-      players,
       isGameOver,
       gameOverMessage,
       playerSymbol,
@@ -119,13 +96,12 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Tic-tac-toe</h1>
-        <PlayerDisplay
+        {!isGameOver ? (<PlayerDisplay
           isPlayer1Turn={ isPlayer1Turn }
-        />
+        />) : ''}
         <Board
           handleSquareClick={ handleSquareClick }
           grids={ grids }
-          players={ players }
           isGameOver={ isGameOver }
           playerSymbol={ playerSymbol }
           isPlayer1Turn={ isPlayer1Turn }
@@ -134,15 +110,15 @@ class App extends Component {
         />
         <Button
           grids={ grids }
-          handleClearGridButtonClick={ handleClearGridButtonClick }
-          buttonValue="Clear grids"
-          clearGrids={ this.clearGrids }
+          buttonValue="Restart"
+          restartGame={ this.restartGame }
+          isGameOver={ isGameOver }
         />
         {isGameOver ? (
           <MessageContainer
-          gameOverMessage={ gameOverMessage }
-          restartGameMessage="Game will restart soon..."
-        />
+            gameOverMessage={ gameOverMessage }
+            isPlayer1Turn={ isPlayer1Turn }
+          />
         ) : ''}
       </div>
     );

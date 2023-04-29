@@ -5,12 +5,27 @@ import player2Symbol from '../../assets/img/x-item.png';
 import './Square.css';
 
 class Square extends Component {
+  state = {
+    disabled: false,
+  };
+
+  handleClick = () => {
+    const { disabled } = this.state;
+    const { index, grids, checkMove } = this.props;
+    if (!disabled) {
+      handleSquareClick(index, grids, player1Symbol);
+      checkMove(grids);  
+      this.setState({
+        disabled: true,
+      })
+    }
+  };
+
   render() {
     const {
       index,
       grids,
       playerSymbol,
-      changeClickedState,
       clicked,
       checkMove,
     } = this.props;
@@ -19,7 +34,6 @@ class Square extends Component {
         className="square"
         onClick={ () => {
           if (!clicked) {
-            changeClickedState(index);
             handleSquareClick(index, grids, playerSymbol);
             checkMove(grids);
           }

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Boogaloo&family=Chewy&family=Elsie:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Boogaloo&family=Chewy&family=Elsie:wght@900&display=swap&family=Vibes&display=swap&family=Londrina+Shadow&family=Londrina+Sketch&family=Londrina+Solid:wght@300;400;900&display=swapp');
 
 * {
   margin: 0;
@@ -8,14 +8,17 @@
 :root {
 
   --background-color: #05313f;
-  --green: #2fa042;
-  --red: #a14646;
+  --button-disabled: #a14646;
+  --button-enabled: #1bc537;
+  --button-enabled-hover: #2fa042;
+  --player1: #3EC5F3;
+  --player2: #FF615F;
   --square-hover: #18637a;
   --white: #e5e5e5;
 
   --bogaloo: 'Boogaloo', cursive;
-  --chewy: 'Chewy', cursive;
-  --elsie: 'Elsie', cursive;
+  --vibes: 'Vibes', cursive;
+  --londrina-solid: 'Londrina Solid', cursive;
   
 }
 
@@ -24,12 +27,14 @@
   color: var(--white);
   height: 100vh;
   text-align: center;
+  user-select: none;
 }
 
 h1 {
+  animation: fade-in 0.5s ease-in forwards;
   align-items: center;
   display: flex;
-  font: 400 40px var(--chewy);
+  font: 400 52px var(--vibes);
   gap: 15px;
   justify-content: center;
   padding-top: 35px;
@@ -39,17 +44,38 @@ h1 {
 h1::before {
   content: '';
   background-color: var(--white);
-  height: 3px;
+  height: 2px;
   position: relative;
-  top: 2.5px;
-  width: 15%;
+  top: -2.5px;
+  width: 50px;
 }
 
 h1::after {
   content: '';
   background-color: var(--white);
-  height: 3px;
+  height: 2px;
   position: relative;
-  top: 2.5px;
-  width: 15%;
+  top: -2.5px;
+  width: 50px;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: .90;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
