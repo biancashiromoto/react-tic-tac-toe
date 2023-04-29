@@ -19,10 +19,7 @@
 }
 
 .message-container:hover {
-  left: 26%;
-  position: fixed;
-  top: 225px;
-  transform: scale(1.25, 1.25);
+  transform: scale(1.125, 1.125) translateX(-45%);
 }
 
 .message-container h2 {
