@@ -1,0 +1,6 @@
+@import url('../../App.css');
+
+.message-container {
+  background-color: aqua;
+  font: 400 30px var(--elsie);
+}

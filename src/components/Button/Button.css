@@ -1,3 +1,5 @@
+@import url('../../App.css');
+
 .clear-grid-button {
   background-color: var(--green);
   border: none;

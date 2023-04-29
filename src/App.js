@@ -5,6 +5,8 @@ import Button from './components/Button/Button';
 import { handleClearGridButtonClick, handleSquareClick } from './services/gameplayFunctions';
 import player1Symbol from '../src/assets/img/o-item.png';
 import player2Symbol from '../src/assets/img/x-item.png';
+import MessageContainer from './components/MessageContainer/MessageContainer';
+import PlayerDisplay from './components/PlayerDisplay/PlayerDisplay';
 
 class App extends Component {
   state = {
@@ -75,7 +77,7 @@ class App extends Component {
       }
     }
     if (isGameOver) {
-      this.restartGame('7500');
+      this.restartGame('3000');
     }
     this.checkForTie();
     this.changePlayer();
@@ -117,17 +119,9 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Tic-tac-toe</h1>
-        {!isGameOver ? (
-        <div
-          className="player-display">
-              <img
-              alt={(isPlayer1Turn) ? 'Player 1' : 'Player 2'}
-              className="player-img-display"
-              src={isPlayer1Turn ? player1Symbol : player2Symbol}
-              />
-              <h3>{(isPlayer1Turn) ? 'Player 1' : 'Player 2'}</h3>
-          </div>
-        ) : ''}
+        <PlayerDisplay
+          isPlayer1Turn={ isPlayer1Turn }
+        />
         <Board
           handleSquareClick={ handleSquareClick }
           grids={ grids }
@@ -144,7 +138,12 @@ class App extends Component {
           buttonValue="Clear grids"
           clearGrids={ this.clearGrids }
         />
-        {isGameOver ? <h2>{gameOverMessage}</h2> : ''}
+        {isGameOver ? (
+          <MessageContainer
+          gameOverMessage={ gameOverMessage }
+          restartGameMessage="Game will restart soon..."
+        />
+        ) : ''}
       </div>
     );
   }

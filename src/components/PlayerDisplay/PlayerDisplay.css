@@ -1,0 +1,20 @@
+@import url('../../App.css');
+
+.player-display-container {
+  align-items: center;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  left: 50%;
+  margin: 20px auto;
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+.player-display-container h3 {
+  font: 400 28px var(--elsie);
+}
+
+.player-img-display {
+  width: 35px;
+}
