@@ -30,6 +30,9 @@
 <hr>
 
 <h2>Additional information</h2>
+<ul>
+  <li><a href="https://bianca-shiromoto-react-tic-tac-toe.vercel.app/">Deploy</a></li>
+</ul>
 <details>
 <summary><b>Icon fonts:</b></summary>
 <ul>
@@ -72,6 +75,9 @@
 <hr>
 
 <h2>Informações adicionais</h2>
+<ul>
+  <li><a href="https://bianca-shiromoto-react-tic-tac-toe.vercel.app/">Deploy</a></li>
+</ul>
 <details>
 <summary><b>Ícones:</b></summary>
 <ul>
