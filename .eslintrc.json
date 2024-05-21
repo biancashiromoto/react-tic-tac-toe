@@ -15,5 +15,10 @@
         "react"
     ],
     "rules": {
+        "comma-dangle": ["error", "always-multiline"],
+        "quotes": ["error", "double"],
+        "object-curly-spacing": ["error", "always"],
+        "semi": ["error", "always"],
+        "indent": ["error", 2],
     }
 }
