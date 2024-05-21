@@ -27,3 +27,7 @@ export interface ButtonPropsInterface {
   restartGame: () => void;
   isGameOver: boolean;
 }
+
+export interface PlayerDisplayPropsInterface {
+  isPlayer1Turn: boolean;
+}
