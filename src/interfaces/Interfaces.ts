@@ -7,3 +7,10 @@ export interface GameStateInterface {
   disabled: boolean;
   isTie: boolean;
 }
+
+export interface SquarePropsInterface {
+  index: number;
+  grids: string[];
+  playerSymbol: string;
+  checkMove: (grids: string[]) => void;
+}
