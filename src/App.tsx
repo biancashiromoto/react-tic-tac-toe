@@ -6,8 +6,18 @@ import { handleSquareClick } from './services/gameplayFunctions';
 import MessageContainer from './components/MessageContainer/MessageContainer';
 import PlayerDisplay from './components/PlayerDisplay/PlayerDisplay';
 
-class App extends Component {
-  state = {
+interface InitialStateInterface {
+  grids: string[];
+  isPlayer1Turn: boolean;
+  playerSymbol: string;
+  isGameOver: boolean;
+  gameOverMessage: string;
+  disabled: boolean;
+  isTie: boolean;
+}
+
+class App extends Component<{}, InitialStateInterface> {
+  state: InitialStateInterface = {
     grids: ['', '', '', '', '', '', '', '', ''],
     isPlayer1Turn: true,
     playerSymbol: 'O',
@@ -19,7 +29,7 @@ class App extends Component {
 
   componentDidUpdate() {
     console.log(this.state);
-  };
+  }
 
   changePlayer = () => {
     this.setState(prevState => ({
@@ -28,7 +38,7 @@ class App extends Component {
     }))
   };
 
-  checkMove = (grids) => {
+  checkMove = (grids: string[]) => {
     const { isPlayer1Turn, isGameOver } = this.state;
     this.checkForTie();
     const winningOptions = [  
