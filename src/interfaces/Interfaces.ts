@@ -14,3 +14,16 @@ export interface SquarePropsInterface {
   playerSymbol: string;
   checkMove: (grids: string[]) => void;
 }
+
+export interface BoardPropsInterface {
+  grids: string[];
+  playerSymbol: string;
+  checkMove: (grids: string[]) => void;
+}
+
+export interface ButtonPropsInterface {
+  buttonValue: string;
+  grids: string[];
+  restartGame: () => void;
+  isGameOver: boolean;
+}
