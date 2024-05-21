@@ -1,23 +1,14 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import './App.css';
 import Board from './components/Board/Board';
 import Button from './components/Button/Button';
 import { handleSquareClick } from './services/gameplayFunctions';
 import MessageContainer from './components/MessageContainer/MessageContainer';
 import PlayerDisplay from './components/PlayerDisplay/PlayerDisplay';
+import { GameStateInterface } from './interfaces/Interfaces';
 
-interface InitialStateInterface {
-  grids: string[];
-  isPlayer1Turn: boolean;
-  playerSymbol: string;
-  isGameOver: boolean;
-  gameOverMessage: string;
-  disabled: boolean;
-  isTie: boolean;
-}
-
-class App extends Component<{}, InitialStateInterface> {
-  state: InitialStateInterface = {
+class App extends Component<object, GameStateInterface> {
+  state: GameStateInterface = {
     grids: ['', '', '', '', '', '', '', '', ''],
     isPlayer1Turn: true,
     playerSymbol: 'O',
