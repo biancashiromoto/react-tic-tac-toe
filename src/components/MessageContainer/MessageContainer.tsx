@@ -3,7 +3,7 @@ import '../../App.css';
 import './MessageContainer.css';
 import { MessageContainerPropsInterface } from "../../interfaces/Interfaces";
 
-const MessageContainer: React.FC<MessageContainerPropsInterface> = ({ isPlayer1Turn, isTie, gameOverMessage }) => {
+const MessageContainer: React.FC<MessageContainerPropsInterface> = ({ isPlayer1Turn, isTie, gameOverMessage }: MessageContainerPropsInterface) => {
   const style = {
     backgroundColor: isTie
     ? 'var(--tie)'
