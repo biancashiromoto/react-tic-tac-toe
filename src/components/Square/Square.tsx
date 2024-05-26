@@ -5,19 +5,28 @@ import './Square.css';
 import { SquarePropsInterface } from '../../interfaces/Interfaces';
 import { Utils } from '../../utils/utils';
 
-const Square: React.FC<SquarePropsInterface> = ({ index, grids, playerSymbol, checkMove, isGameOver }) => {
-  const utils = new Utils();
+const Square: React.FC<SquarePropsInterface> = ({
+  index,
+  grids,
+  playerSymbol,
+  checkMove,
+  isGameOver
+}: SquarePropsInterface) => {
+  const {
+    _player2Symbol,
+    handleSquareClick,
+  } = new Utils();
 
-  const [isDisabled, setIsDisabled] = useState(false);
+  const [isDisabled, setIsDisabled] = useState<boolean>(false);
   useEffect(() => {
     if (!isGameOver) setIsDisabled(false)
   }, [isGameOver, grids]);
 
   return (
     <div
-      className={`${isDisabled ? "square-disabled" : ""} square`}
+      className={`square ${isDisabled && "disabled"}`}
       onClick={() => {
-        utils.handleSquareClick(index, grids, playerSymbol)
+        handleSquareClick(index, grids, playerSymbol)
         checkMove(grids),
         setIsDisabled(true)
       }}
@@ -25,7 +34,7 @@ const Square: React.FC<SquarePropsInterface> = ({ index, grids, playerSymbol, ch
       {grids[index] && (
           <img
             className="player-symbol"
-            src={grids[index] === 'X' ? player2Symbol : player1Symbol}
+            src={grids[index] === _player2Symbol ? player2Symbol : player1Symbol}
             alt={grids[index]}
           />
         )}
