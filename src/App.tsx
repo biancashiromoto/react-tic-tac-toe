@@ -9,7 +9,8 @@ const App = () => {
   const {
     _grids,
     _player1Symbol,
-    _player2Symbol
+    _player2Symbol,
+    _winningOptions
   } = new Utils();
 
   const [grids, setGrids] = useState(_grids);
@@ -26,25 +27,9 @@ const App = () => {
 
   const checkMove = (grids: string[]) => {
     checkForTie();
-    const winningOptions = [
-
-      /** Horizontal */
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8],
-
-      /** Vertical */
-      [0, 3, 6],
-      [1, 4, 7],
-      [2, 5, 8],
-
-      /** Diagonal */
-      [0, 4, 8],
-      [2, 4, 6]
-    ];
-
-    for (let index = 0; index < winningOptions.length; index += 1) {
-      const [x, y, z] = winningOptions[index];
+  
+    for (let index = 0; index < _winningOptions.length; index += 1) {
+      const [x, y, z] = _winningOptions[index];
       if (grids[x] && grids[x] === grids[y] && grids[x] === grids[z]) {
         setIsGameOver(true),
         setIsTie(false),
