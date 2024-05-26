@@ -16,16 +16,28 @@ export class Utils {
     [2, 4, 6]
   ];
 
+  /**
+   * Handles the grid in the current game when the square is clicked.
+   * @param index A number type that corresponds to the index in the grid array.
+   * @param grids  The grid array containing an empty string or the player's symbol.
+   * @param playerSymbol The current player's symbol.
+   * @returns The updated grids as an array containing an empty string or the player's symbol.
+   */
   public handleSquareClick = (index: number, grids: string[], playerSymbol: string): string[] => {
     grids[index] = playerSymbol;
     return grids;
   };
 
-  public isTie = (grids: string[]) => {
-    return grids.every(grid => grid !== "");
-  };
+  /**
+   * Checks if the game ends in tie.
+   * @param grids The array corresponding to the grids in the current game.
+   * @returns True if every grid is filled.
+   */
+  public isTie = (grids: string[]): boolean => grids.every(grid => grid !== "");
 
-  public resetGrids = () => {
-    return new Array(9).fill("");
-  };
+  /**
+   * Resets the grids to an empty array.
+   * @returns An array containing nine empty strings.
+   */
+  public resetGrids = (): string[] => new Array(9).fill("");
 }
