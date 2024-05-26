@@ -35,6 +35,6 @@
   width: 50px;
 }
 
-.square-disabled {
+.disabled {
   pointer-events: none;
 }
