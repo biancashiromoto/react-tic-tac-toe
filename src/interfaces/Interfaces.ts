@@ -20,10 +20,8 @@ export interface BoardPropsInterface {
   grids: string[];
   playerSymbol: string;
   checkMove: (grids: string[]) => void;
-  handleSquareClick: () => void;
   isGameOver?: boolean;
   isPlayer1Turn: boolean;
-  disabled: boolean;
 }
 
 export interface ButtonPropsInterface {
@@ -36,7 +34,6 @@ export interface ButtonPropsInterface {
 export interface PlayerDisplayPropsInterface {
   isPlayer1Turn: boolean;
 }
-
 export interface MessageContainerPropsInterface {
   isPlayer1Turn: boolean;
   gameOverMessage: string;
