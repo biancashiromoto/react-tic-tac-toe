@@ -34,3 +34,7 @@
   animation: fade-in 0.2s ease-in forwards;
   width: 50px;
 }
+
+.disabled {
+  pointer-events: none;
+}
