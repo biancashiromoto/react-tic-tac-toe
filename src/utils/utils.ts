@@ -23,7 +23,7 @@ export class Utils {
    * @param playerSymbol The current player's symbol.
    * @returns The updated grids as an array containing an empty string or the player's symbol.
    */
-  public handleSquareClick = (index: number, grids: string[], playerSymbol: string): string[] => {
+  public handleMove = (index: number, grids: string[], playerSymbol: string): string[] => {
     grids[index] = playerSymbol;
     return grids;
   };
