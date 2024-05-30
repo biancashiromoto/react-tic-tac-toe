@@ -4,6 +4,7 @@ import Button from './components/Button/Button';
 import MessageContainer from './components/MessageContainer/MessageContainer';
 import { Utils } from './utils/utils';
 import PlayerDisplay from './components/PlayerDisplay/PlayerDisplay';
+import Provider from './context/Provider';
 
 const App = () => {
   const {
@@ -57,7 +58,8 @@ const App = () => {
   };
 
   return (
-    <div className="App">
+    <Provider>
+      <div className="App">
         <h1>Tic-tac-toe</h1>
         {!isGameOver && <PlayerDisplay isPlayer1Turn={ isPlayer1Turn } />}
         <Board
@@ -81,6 +83,7 @@ const App = () => {
           />
         )}
       </div>
+    </Provider>
   )
 }
 
