@@ -14,7 +14,7 @@ const Square: React.FC<SquarePropsInterface> = ({
 }: SquarePropsInterface) => {
   const {
     _player2Symbol,
-    handleSquareClick,
+    handleMove,
   } = new Utils();
 
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
@@ -26,7 +26,7 @@ const Square: React.FC<SquarePropsInterface> = ({
     <div
       className={`square ${isDisabled && "disabled"}`}
       onClick={() => {
-        handleSquareClick(index, grids, playerSymbol)
+        handleMove(index, grids, playerSymbol)
         checkMove(grids),
         setIsDisabled(true)
       }}
