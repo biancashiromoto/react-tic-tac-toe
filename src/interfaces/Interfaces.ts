@@ -1,11 +1,9 @@
 export interface SquarePropsInterface {
   index: number;
-  playerSymbol: string;
   checkMove: (grids: string[]) => void;
 }
 
 export interface BoardPropsInterface {
-  playerSymbol: string;
   checkMove: (grids: string[]) => void;
 }
 
