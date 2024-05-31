@@ -7,7 +7,6 @@ export interface SquarePropsInterface {
 export interface BoardPropsInterface {
   playerSymbol: string;
   checkMove: (grids: string[]) => void;
-  isPlayer1Turn: boolean;
 }
 
 export interface ButtonPropsInterface {
@@ -16,7 +15,6 @@ export interface ButtonPropsInterface {
 }
 
 export interface MessageContainerPropsInterface {
-  isPlayer1Turn: boolean;
   isTie: boolean;
 }
 
