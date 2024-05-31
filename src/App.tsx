@@ -13,7 +13,6 @@ const App = () => {
     _winningOptions
   } = new Utils();
 
-  const [playerSymbol, setPlayerSymbol] = useState(_player1Symbol);
   const [isTie, setIsTie] = useState(false);
 
   const {
@@ -23,9 +22,7 @@ const App = () => {
     setIsGameOver,
     isPlayer1Turn,
     setIsPlayer1Turn,
-    // playerSymbol,
-    // setPlayerSymbol,
-    // gameOverMessage,
+    setPlayerSymbol,
     setGameOverMessage,
     // isTie,
     // setIsTie
@@ -72,7 +69,6 @@ const App = () => {
       <h1>Tic-tac-toe</h1>
       {!isGameOver && <PlayerDisplay />}
       <Board
-        playerSymbol={ playerSymbol }
         checkMove={ checkMove }
       />
       <Button

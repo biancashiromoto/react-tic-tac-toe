@@ -8,7 +8,6 @@ import { context } from '../../context/context';
 
 const Square: React.FC<SquarePropsInterface> = ({
   index,
-  playerSymbol,
   checkMove,
 }: SquarePropsInterface) => {
   const {
@@ -18,7 +17,8 @@ const Square: React.FC<SquarePropsInterface> = ({
 
   const {
     grids,
-    isGameOver
+    isGameOver,
+    playerSymbol
   } = useContext(context);
 
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
