@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import player1Symbol from '../../assets/img/o-item.png';
 import player2Symbol from '../../assets/img/x-item.png';
 import './Square.css';
 import { SquarePropsInterface } from '../../interfaces/Interfaces';
 import { Utils } from '../../utils/utils';
+import { context } from '../../context/context';
 
 const Square: React.FC<SquarePropsInterface> = ({
   index,
-  grids,
   playerSymbol,
   checkMove,
   isGameOver
@@ -20,7 +20,9 @@ const Square: React.FC<SquarePropsInterface> = ({
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
   useEffect(() => {
     if (!isGameOver) setIsDisabled(false)
-  }, [isGameOver, grids]);
+  }, [isGameOver]);
+
+    const { grids } = useContext(context);
 
   return (
     <div

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import Board from './components/Board/Board';
 import Button from './components/Button/Button';
 import MessageContainer from './components/MessageContainer/MessageContainer';
@@ -8,19 +8,19 @@ import { context } from './context/context';
 
 const App = () => {
   const {
-    _grids,
     _player1Symbol,
     _player2Symbol,
     _winningOptions
   } = new Utils();
 
-  const [grids, setGrids] = useState(_grids);
   const [isGameOver, setIsGameOver] = useState(false);
   const [playerSymbol, setPlayerSymbol] = useState(_player1Symbol);
   const [gameOverMessage, setGameOverMessage] = useState("");
   const [isTie, setIsTie] = useState(false);
 
   const {
+    grids,
+    setGrids,
     isPlayer1Turn,
     setIsPlayer1Turn,
   } = useContext(context);
@@ -45,10 +45,6 @@ const App = () => {
     changePlayer();
   };
 
-  useEffect(() => {
-    console.log("isPlayer1Turn: ", isPlayer1Turn);
-  }, [isPlayer1Turn]);
-
   const restartGame = () => {
     setGameOverMessage(""),
     setIsGameOver(false),
@@ -70,14 +66,12 @@ const App = () => {
       <h1>Tic-tac-toe</h1>
       {!isGameOver && <PlayerDisplay />}
       <Board
-        grids={ grids }
         isGameOver={ isGameOver }
         playerSymbol={ playerSymbol }
         isPlayer1Turn={ isPlayer1Turn }
         checkMove={ checkMove }
       />
       <Button
-        grids={ grids }
         buttonValue="Restart"
         restartGame={ restartGame }
         isGameOver={ isGameOver }
