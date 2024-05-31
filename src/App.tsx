@@ -14,7 +14,6 @@ const App = () => {
   } = new Utils();
 
   const [playerSymbol, setPlayerSymbol] = useState(_player1Symbol);
-  const [gameOverMessage, setGameOverMessage] = useState("");
   const [isTie, setIsTie] = useState(false);
 
   const {
@@ -27,7 +26,7 @@ const App = () => {
     // playerSymbol,
     // setPlayerSymbol,
     // gameOverMessage,
-    // setGameOverMessage,
+    setGameOverMessage,
     // isTie,
     // setIsTie
   } = useContext(context);
@@ -83,7 +82,6 @@ const App = () => {
       />
       {isGameOver && (
         <MessageContainer
-          gameOverMessage={ gameOverMessage }
           isPlayer1Turn={ isPlayer1Turn }
           isTie={ isTie }
         />

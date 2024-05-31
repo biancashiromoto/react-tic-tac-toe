@@ -4,8 +4,13 @@ import './MessageContainer.css';
 import { MessageContainerPropsInterface } from "../../interfaces/Interfaces";
 import { context } from '../../context/context';
 
-const MessageContainer: React.FC<MessageContainerPropsInterface> = ({ isTie, gameOverMessage }: MessageContainerPropsInterface) => {
-  const { isPlayer1Turn } = useContext(context);
+const MessageContainer: React.FC<MessageContainerPropsInterface> = ({
+  isTie,
+}: MessageContainerPropsInterface) => {
+  const {
+    isPlayer1Turn,
+    gameOverMessage,
+  } = useContext(context);
 
   const style = {
     backgroundColor: isTie
