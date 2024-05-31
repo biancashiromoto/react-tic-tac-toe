@@ -17,7 +17,6 @@ export interface ButtonPropsInterface {
 
 export interface MessageContainerPropsInterface {
   isPlayer1Turn: boolean;
-  gameOverMessage: string;
   isTie: boolean;
 }
 
