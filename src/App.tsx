@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Board from './components/Board/Board';
 import Button from './components/Button/Button';
 import MessageContainer from './components/MessageContainer/MessageContainer';
 import { Utils } from './utils/utils';
 import PlayerDisplay from './components/PlayerDisplay/PlayerDisplay';
-import Provider from './context/Provider';
+import { context } from './context/context';
 
 const App = () => {
   const {
@@ -16,10 +16,14 @@ const App = () => {
 
   const [grids, setGrids] = useState(_grids);
   const [isGameOver, setIsGameOver] = useState(false);
-  const [isPlayer1Turn, setIsPlayer1Turn] = useState(true);
   const [playerSymbol, setPlayerSymbol] = useState(_player1Symbol);
   const [gameOverMessage, setGameOverMessage] = useState("");
   const [isTie, setIsTie] = useState(false);
+
+  const {
+    isPlayer1Turn,
+    setIsPlayer1Turn,
+  } = useContext(context);
 
   const changePlayer = () => {
     setIsPlayer1Turn(prevState => !prevState);
@@ -41,6 +45,10 @@ const App = () => {
     changePlayer();
   };
 
+  useEffect(() => {
+    console.log("isPlayer1Turn: ", isPlayer1Turn);
+  }, [isPlayer1Turn]);
+
   const restartGame = () => {
     setGameOverMessage(""),
     setIsGameOver(false),
@@ -58,32 +66,30 @@ const App = () => {
   };
 
   return (
-    <Provider>
-      <div className="App">
-        <h1>Tic-tac-toe</h1>
-        {!isGameOver && <PlayerDisplay isPlayer1Turn={ isPlayer1Turn } />}
-        <Board
-          grids={ grids }
-          isGameOver={ isGameOver }
-          playerSymbol={ playerSymbol }
+    <div className="App">
+      <h1>Tic-tac-toe</h1>
+      {!isGameOver && <PlayerDisplay />}
+      <Board
+        grids={ grids }
+        isGameOver={ isGameOver }
+        playerSymbol={ playerSymbol }
+        isPlayer1Turn={ isPlayer1Turn }
+        checkMove={ checkMove }
+      />
+      <Button
+        grids={ grids }
+        buttonValue="Restart"
+        restartGame={ restartGame }
+        isGameOver={ isGameOver }
+      />
+      {isGameOver && (
+        <MessageContainer
+          gameOverMessage={ gameOverMessage }
           isPlayer1Turn={ isPlayer1Turn }
-          checkMove={ checkMove }
+          isTie={ isTie }
         />
-        <Button
-          grids={ grids }
-          buttonValue="Restart"
-          restartGame={ restartGame }
-          isGameOver={ isGameOver }
-        />
-        {isGameOver && (
-          <MessageContainer
-            gameOverMessage={ gameOverMessage }
-            isPlayer1Turn={ isPlayer1Turn }
-            isTie={ isTie }
-          />
-        )}
-      </div>
-    </Provider>
+      )}
+    </div>
   )
 }
 
