@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import Board from './components/Board/Board';
 import Button from './components/Button/Button';
 import MessageContainer from './components/MessageContainer/MessageContainer';
@@ -13,8 +13,6 @@ const App = () => {
     _winningOptions
   } = new Utils();
 
-  const [isTie, setIsTie] = useState(false);
-
   const {
     grids,
     setGrids,
@@ -24,8 +22,7 @@ const App = () => {
     setIsPlayer1Turn,
     setPlayerSymbol,
     setGameOverMessage,
-    // isTie,
-    // setIsTie
+    setIsTie
   } = useContext(context);
 
   const changePlayer = () => {
@@ -76,9 +73,7 @@ const App = () => {
         restartGame={ restartGame }
       />
       {isGameOver && (
-        <MessageContainer
-          isTie={ isTie }
-        />
+        <MessageContainer />
       )}
     </div>
   )
