@@ -12,10 +12,6 @@ export interface ButtonPropsInterface {
   restartGame: () => void;
 }
 
-export interface MessageContainerPropsInterface {
-  isTie: boolean;
-}
-
 export interface ContextProps {
   grids: string[];
   setGrids: React.Dispatch<React.SetStateAction<string[]>>;
