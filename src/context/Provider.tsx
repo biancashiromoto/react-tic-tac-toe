@@ -3,11 +3,12 @@ import { Utils } from '../utils/utils';
 import { context } from './context';
 import { ContextProps } from '../interfaces/Interfaces';
 
+const {
+  _grids,
+  _player1Symbol,
+} = new Utils();
+
 const Provider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const {
-    _grids,
-    _player1Symbol,
-  } = new Utils();
 
   const [grids, setGrids] = useState(_grids);
   const [isGameOver, setIsGameOver] = useState(false);
