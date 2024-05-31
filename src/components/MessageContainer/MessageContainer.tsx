@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../../App.css';
 import './MessageContainer.css';
 import { MessageContainerPropsInterface } from "../../interfaces/Interfaces";
+import { context } from '../../context/context';
 
-const MessageContainer: React.FC<MessageContainerPropsInterface> = ({ isPlayer1Turn, isTie, gameOverMessage }: MessageContainerPropsInterface) => {
+const MessageContainer: React.FC<MessageContainerPropsInterface> = ({ isTie, gameOverMessage }: MessageContainerPropsInterface) => {
+  const { isPlayer1Turn } = useContext(context);
+
   const style = {
     backgroundColor: isTie
     ? 'var(--tie)'
