@@ -10,19 +10,22 @@ const Square: React.FC<SquarePropsInterface> = ({
   index,
   playerSymbol,
   checkMove,
-  isGameOver
 }: SquarePropsInterface) => {
   const {
     _player2Symbol,
     handleMove,
   } = new Utils();
 
+  const {
+    grids,
+    isGameOver
+  } = useContext(context);
+
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
   useEffect(() => {
     if (!isGameOver) setIsDisabled(false)
   }, [isGameOver]);
 
-    const { grids } = useContext(context);
 
   return (
     <div

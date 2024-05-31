@@ -13,7 +13,6 @@ const App = () => {
     _winningOptions
   } = new Utils();
 
-  const [isGameOver, setIsGameOver] = useState(false);
   const [playerSymbol, setPlayerSymbol] = useState(_player1Symbol);
   const [gameOverMessage, setGameOverMessage] = useState("");
   const [isTie, setIsTie] = useState(false);
@@ -21,8 +20,16 @@ const App = () => {
   const {
     grids,
     setGrids,
+    isGameOver,
+    setIsGameOver,
     isPlayer1Turn,
     setIsPlayer1Turn,
+    // playerSymbol,
+    // setPlayerSymbol,
+    // gameOverMessage,
+    // setGameOverMessage,
+    // isTie,
+    // setIsTie
   } = useContext(context);
 
   const changePlayer = () => {
@@ -66,7 +73,6 @@ const App = () => {
       <h1>Tic-tac-toe</h1>
       {!isGameOver && <PlayerDisplay />}
       <Board
-        isGameOver={ isGameOver }
         playerSymbol={ playerSymbol }
         isPlayer1Turn={ isPlayer1Turn }
         checkMove={ checkMove }
@@ -74,7 +80,6 @@ const App = () => {
       <Button
         buttonValue="Restart"
         restartGame={ restartGame }
-        isGameOver={ isGameOver }
       />
       {isGameOver && (
         <MessageContainer

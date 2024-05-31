@@ -3,12 +3,9 @@ import Square from '../Square/Square';
 import './Board.css';
 import { BoardPropsInterface } from "../../interfaces/Interfaces";
 import { Utils } from '../../utils/utils';
-
 const Board: React.FC<BoardPropsInterface> = ({
   playerSymbol,
   checkMove,
-  isGameOver
-  
 }) => {
   const { _grids } = new Utils();
 
@@ -16,7 +13,6 @@ const Board: React.FC<BoardPropsInterface> = ({
     <div className="board">
       {_grids.map((_item, index) => (
         <Square
-          isGameOver={isGameOver}
           key={index}
           index={index}
           playerSymbol={playerSymbol}

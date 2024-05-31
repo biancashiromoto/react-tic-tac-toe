@@ -5,10 +5,12 @@ import { context } from '../../context/context';
 
 const Button: React.FC<ButtonPropsInterface> = ({
   buttonValue,
-  isGameOver,
   restartGame
 }) => {
-  const { grids } = useContext(context);
+  const {
+    grids,
+    isGameOver
+  } = useContext(context);
 
   return (
     <button
