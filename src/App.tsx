@@ -73,7 +73,6 @@ const App = () => {
       {!isGameOver && <PlayerDisplay />}
       <Board
         playerSymbol={ playerSymbol }
-        isPlayer1Turn={ isPlayer1Turn }
         checkMove={ checkMove }
       />
       <Button
@@ -82,7 +81,6 @@ const App = () => {
       />
       {isGameOver && (
         <MessageContainer
-          isPlayer1Turn={ isPlayer1Turn }
           isTie={ isTie }
         />
       )}
