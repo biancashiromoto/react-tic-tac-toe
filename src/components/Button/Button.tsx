@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Button.css';
 import { ButtonPropsInterface } from '../../interfaces/Interfaces';
+import { context } from '../../context/context';
 
-const Button: React.FC<ButtonPropsInterface> = ({ buttonValue, grids, isGameOver, restartGame }) => {
+const Button: React.FC<ButtonPropsInterface> = ({
+  buttonValue,
+  restartGame
+}) => {
+  const {
+    grids,
+    isGameOver
+  } = useContext(context);
+
   return (
     <button
       type="button"
