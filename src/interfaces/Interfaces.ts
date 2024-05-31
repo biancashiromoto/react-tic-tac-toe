@@ -31,9 +31,6 @@ export interface ButtonPropsInterface {
   isGameOver?: boolean;
 }
 
-export interface PlayerDisplayPropsInterface {
-  isPlayer1Turn: boolean;
-}
 export interface MessageContainerPropsInterface {
   isPlayer1Turn: boolean;
   gameOverMessage: string;
