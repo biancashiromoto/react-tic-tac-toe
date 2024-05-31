@@ -2,20 +2,17 @@ export interface SquarePropsInterface {
   index: number;
   playerSymbol: string;
   checkMove: (grids: string[]) => void;
-  isGameOver?: boolean;
 }
 
 export interface BoardPropsInterface {
   playerSymbol: string;
   checkMove: (grids: string[]) => void;
-  isGameOver?: boolean;
   isPlayer1Turn: boolean;
 }
 
 export interface ButtonPropsInterface {
   buttonValue: string;
   restartGame: () => void;
-  isGameOver?: boolean;
 }
 
 export interface MessageContainerPropsInterface {
