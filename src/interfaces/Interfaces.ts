@@ -1,15 +1,10 @@
 export interface SquarePropsInterface {
   index: number;
-  checkMove: (grids: string[]) => void;
-}
-
-export interface BoardPropsInterface {
-  checkMove: (grids: string[]) => void;
 }
 
 export interface ButtonPropsInterface {
   buttonValue: string;
-  restartGame: () => void;
+  restartGame?: () => void;
 }
 
 export interface ContextProps {
