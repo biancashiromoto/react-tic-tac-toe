@@ -7,43 +7,17 @@ import PlayerDisplay from './components/PlayerDisplay/PlayerDisplay';
 import { context } from './context/context';
 
 const App = () => {
-  const {
-    _player1Symbol,
-    _player2Symbol,
-    _winningOptions
-  } = new Utils();
+  const { _player1Symbol } = new Utils();
 
   const {
     grids,
     setGrids,
     isGameOver,
     setIsGameOver,
-    isPlayer1Turn,
     setIsPlayer1Turn,
     setPlayerSymbol,
     setGameOverMessage,
-    setIsTie
   } = useContext(context);
-
-  const changePlayer = () => {
-    setIsPlayer1Turn(prevState => !prevState);
-    setPlayerSymbol(prevState => prevState === _player1Symbol ? _player2Symbol : _player1Symbol);
-  };
-
-  const checkMove = (grids: string[]) => {
-    checkForTie();
-  
-    for (let index = 0; index < _winningOptions.length; index += 1) {
-      const [x, y, z] = _winningOptions[index];
-      if (grids[x] && grids[x] === grids[y] && grids[x] === grids[z]) {
-        setIsGameOver(true),
-        setIsTie(false),
-        setGameOverMessage(isPlayer1Turn ? 'Player 1 wins!' : 'Player 2 wins!')
-      }
-    }
-    if (isGameOver) restartGame();
-    changePlayer();
-  };
 
   const restartGame = () => {
     setGameOverMessage(""),
@@ -53,28 +27,18 @@ const App = () => {
     setIsPlayer1Turn(true)
   }
 
-  const checkForTie = () => {
-    if (grids.every((grid) => grid !== "")) {
-      setIsGameOver(true),
-      setGameOverMessage("Tie!"),
-      setIsTie(true);
-    }
-  };
-
   return (
     <div className="App">
       <h1>Tic-tac-toe</h1>
       {!isGameOver && <PlayerDisplay />}
-      <Board
-        checkMove={ checkMove }
-      />
+      <Board />
       <Button
-        buttonValue="Restart"
-        restartGame={ restartGame }
+        label="Restart"
+        className={isGameOver ? 'pulse restart-game-button' : 'restart-game-button'}
+        disabled={grids.every(grid => grid === "")}
+        onClick={ restartGame }
       />
-      {isGameOver && (
-        <MessageContainer />
-      )}
+      {isGameOver && <MessageContainer />}
     </div>
   )
 }

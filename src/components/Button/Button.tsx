@@ -3,25 +3,17 @@ import './Button.css';
 import { ButtonPropsInterface } from '../../interfaces/Interfaces';
 import { context } from '../../context/context';
 
-const Button: React.FC<ButtonPropsInterface> = ({
-  buttonValue,
-  restartGame
-}) => {
-  const {
-    grids,
-    isGameOver
-  } = useContext(context);
+const Button: React.FC<ButtonPropsInterface> = ({ label, onClick, className }) => {
+  const { grids } = useContext(context);
 
   return (
     <button
-      type="button"
-      className={isGameOver ? 'pulse restart-game-button' : 'restart-game-button'}
-      onClick={ () => {
-        restartGame();
-      }}
+      className={className}
       disabled={grids.every(grid => grid === "")}
+      type="button"
+      onClick={() => onClick()}
     >
-      {buttonValue}
+      {label}
     </button>
   )
 }
