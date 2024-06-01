@@ -3,8 +3,11 @@ export interface SquarePropsInterface {
 }
 
 export interface ButtonPropsInterface {
-  buttonValue: string;
-  restartGame?: () => void;
+  className?: string;
+  disabled?: boolean;
+  label: string;
+  onClick: () => void;
+  type?: string;
 }
 
 export interface ContextProps {
