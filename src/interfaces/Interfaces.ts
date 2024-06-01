@@ -1,4 +1,4 @@
-export interface SquarePropsInterface {
+export interface CellPropsInterface {
   index: number;
 }
 
@@ -11,8 +11,8 @@ export interface ButtonPropsInterface {
 }
 
 export interface ContextProps {
-  grids: string[];
-  setGrids: React.Dispatch<React.SetStateAction<string[]>>;
+  cells: string[];
+  setCells: React.Dispatch<React.SetStateAction<string[]>>;
   isGameOver: boolean;
   setIsGameOver: React.Dispatch<React.SetStateAction<boolean>>;
   isPlayer1Turn: boolean;

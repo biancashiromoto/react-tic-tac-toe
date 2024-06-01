@@ -1,14 +1,14 @@
 import React from 'react';
-import Square from '../Square/Square';
+import Cell from '../Cell/Cell';
 import './Board.css';
 import { Utils } from '../../utils/utils';
 const Board: React.FC = () => {
-  const { _grids } = new Utils();
+  const { _INITIAL_CELLS } = new Utils();
 
   return (
     <div className="board">
-      {_grids.map((_item, index) => (
-        <Square
+      {_INITIAL_CELLS.map((_item, index) => (
+        <Cell
           key={index}
           index={index}
         />

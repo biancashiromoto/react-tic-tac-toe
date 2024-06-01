@@ -4,13 +4,13 @@ import { context } from './context';
 import { ContextProps } from '../interfaces/Interfaces';
 
 const {
-  _grids,
+  _INITIAL_CELLS,
   _player1Symbol,
 } = new Utils();
 
 const Provider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
-  const [grids, setGrids] = useState(_grids);
+  const [cells, setCells] = useState(_INITIAL_CELLS);
   const [isGameOver, setIsGameOver] = useState(false);
   const [isPlayer1Turn, setIsPlayer1Turn] = useState(true);
   const [playerSymbol, setPlayerSymbol] = useState(_player1Symbol);
@@ -18,8 +18,8 @@ const Provider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isTie, setIsTie] = useState(false);
 
   const value: ContextProps = {
-    grids,
-    setGrids,
+    cells,
+    setCells,
     isGameOver,
     setIsGameOver,
     isPlayer1Turn,

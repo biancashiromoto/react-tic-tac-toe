@@ -4,12 +4,12 @@ import { ButtonPropsInterface } from '../../interfaces/Interfaces';
 import { context } from '../../context/context';
 
 const Button: React.FC<ButtonPropsInterface> = ({ label, onClick, className }) => {
-  const { grids } = useContext(context);
+  const { cells } = useContext(context);
 
   return (
     <button
       className={className}
-      disabled={grids.every(grid => grid === "")}
+      disabled={cells.every(cell => cell === "")}
       type="button"
       onClick={() => onClick()}
     >
