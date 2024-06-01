@@ -1,11 +1,8 @@
 import React from 'react';
 import Square from '../Square/Square';
 import './Board.css';
-import { BoardPropsInterface } from "../../interfaces/Interfaces";
 import { Utils } from '../../utils/utils';
-const Board: React.FC<BoardPropsInterface> = ({
-  checkMove,
-}) => {
+const Board: React.FC = () => {
   const { _grids } = new Utils();
 
   return (
@@ -14,7 +11,6 @@ const Board: React.FC<BoardPropsInterface> = ({
         <Square
           key={index}
           index={index}
-          checkMove={checkMove}
         />
       ))}
     </div>
