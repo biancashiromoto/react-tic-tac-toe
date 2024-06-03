@@ -28,14 +28,18 @@ const App = () => {
   }
 
   return (
-    <div className="App">
+    <div
+      className="App"
+      data-testid="app"
+    >
       <h1>Tic-tac-toe</h1>
       {!isGameOver && <PlayerDisplay />}
       <Board />
       <Button
-        label="Restart"
         className={isGameOver ? 'pulse restart-game-button' : 'restart-game-button'}
+        dataTestId="restart-game-button"
         disabled={cells.every(cell => cell === "")}
+        label="Restart"
         onClick={ restartGame }
       />
       {isGameOver && <MessageContainer />}
