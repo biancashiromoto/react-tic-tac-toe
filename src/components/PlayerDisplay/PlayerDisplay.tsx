@@ -17,6 +17,7 @@ const PlayerDisplay: React.FC = () => {
   return (
     <div
         className="player-display-container"
+        data-testid="player-display-container"
       >
         <img
           src={ isPlayer1Turn ? player1Symbol : player2Symbol }
