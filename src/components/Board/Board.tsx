@@ -6,7 +6,10 @@ const Board: React.FC = () => {
   const { _INITIAL_CELLS } = new Utils();
 
   return (
-    <div className="board">
+    <div
+      className="board"
+      data-testid="board"
+    >
       {_INITIAL_CELLS.map((_item, index) => (
         <Cell
           key={index}
