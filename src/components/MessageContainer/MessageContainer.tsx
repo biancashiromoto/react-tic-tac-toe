@@ -20,6 +20,7 @@ const MessageContainer: React.FC = () => {
   return (
     <div
         className="message-container"
+        data-testid="message-container"
         style={ style }
       >
         <h2>{gameOverMessage}</h2>
