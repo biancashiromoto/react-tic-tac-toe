@@ -4,6 +4,7 @@ export interface CellPropsInterface {
 
 export interface ButtonPropsInterface {
   className?: string;
+  dataTestId?: string;
   disabled?: boolean;
   label: string;
   onClick: () => void;
