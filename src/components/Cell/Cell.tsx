@@ -69,8 +69,6 @@ const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
     }
   };
 
-  useEffect(() => console.log(isDisabled), [isDisabled])
-
   return (
     <div
       className={`cell ${isDisabled && "disabled"}`}
