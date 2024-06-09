@@ -69,15 +69,23 @@ const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
     }
   };
 
+  const handleClick = () => {
+    if (isDisabled || cells[index]) return;
+    handleMove(index, cells, playerSymbol);
+    setCells(prevCells => {
+      const newCells = [...prevCells];
+      newCells[index] = playerSymbol;
+      return newCells;
+    });
+    checkMove(cells);
+    setIsDisabled(true);
+  };
+
   return (
     <div
       className={`cell ${isDisabled && "disabled"}`}
       data-testid="cell"
-      onClick={() => {
-        handleMove(index, cells, playerSymbol)
-        checkMove(cells),
-        setIsDisabled(true)
-      }}
+      onClick={() => handleClick()}
     >
       {cells[index] && (
           <img
