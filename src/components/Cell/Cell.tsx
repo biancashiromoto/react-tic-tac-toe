@@ -12,7 +12,13 @@ const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
 
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
   const { playerSymbol, switchPlayer } = usePlayerState();
-  const { cells, setCells, checkForTie, checkForWin, isGameOver } = useGameState();
+  const {
+    cells,
+    setCells,
+    checkForTie,
+    checkForWin,
+    isGameOver
+  } = useGameState();
 
   useEffect(() => {
     if (isGameOver || cells.every(cell => cell === "")) {
