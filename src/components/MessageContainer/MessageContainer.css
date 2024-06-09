@@ -25,3 +25,15 @@
 .message-container h2 {
   font: 400 52px var(--londrina-solid);
 }
+
+.player1 {
+  background-color: var(--player1);
+  }
+  
+.player2 {
+  background-color: var(--player2);
+}
+  
+.tie {
+  background-color: var(--tie);
+}
