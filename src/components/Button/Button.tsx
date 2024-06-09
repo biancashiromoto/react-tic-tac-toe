@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './Button.css';
 import { ButtonPropsInterface } from '../../interfaces/Interfaces';
-import { context } from '../../context/context';
+import useGameState from '../../hooks/useGameState';
 
 const Button: React.FC<ButtonPropsInterface> = ({ label, onClick, className, dataTestId }) => {
-  const { cells } = useContext(context);
+  const { cells } = useGameState();
 
   return (
     <button
