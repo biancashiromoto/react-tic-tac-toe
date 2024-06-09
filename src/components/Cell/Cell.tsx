@@ -5,10 +5,10 @@ import './Cell.css';
 import { CellPropsInterface } from '../../interfaces/Interfaces';
 import { Utils } from '../../utils/utils';
 import { context } from '../../context/context';
+import usePlayerState from '../../hooks/usePlayerState';
 
 const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
   const {
-    _player1Symbol,
     _player2Symbol,
     handleMove,
     _winningOptions
@@ -17,9 +17,6 @@ const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
   const {
     cells,
     isGameOver,
-    playerSymbol,
-    setIsPlayer1Turn,
-    setPlayerSymbol,
     setGameOverMessage,
     setIsGameOver,
     setIsTie,
@@ -28,17 +25,13 @@ const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
   } = useContext(context);
 
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
+  const { playerSymbol, switchPlayer } = usePlayerState();
 
   useEffect(() => {
     if (isGameOver || cells.every(cell => cell === "")) {
       setIsDisabled(false);
     }
   }, [isGameOver, cells]);
-
-  const changePlayer = () => {
-    setIsPlayer1Turn(prevState => !prevState);
-    setPlayerSymbol(prevState => prevState === _player1Symbol ? _player2Symbol : _player1Symbol);
-  };
 
   const checkMove = (cells: string[]) => {
     checkForTie();
@@ -51,7 +44,7 @@ const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
         setGameOverMessage(isPlayer1Turn ? 'Player 1 wins!' : 'Player 2 wins!')
       }
     }
-    changePlayer();
+    switchPlayer();
   };
 
   const checkForTie = () => {
