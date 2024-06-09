@@ -10,16 +10,22 @@ const useGameState = () => {
     setIsGameOver,
     setGameOverMessage,
     setIsTie,
-    playerSymbol
+    playerSymbol,
+    setPlayerSymbol,
+    setIsPlayer1Turn
   } = useContext(context);
 
-  const { _winningOptions } = new Utils();
+  const {
+    _winningOptions,
+    _player1Symbol
+  } = new Utils();
 
   const resetGame = () => {
-    setCells(new Array(9).fill(""));
-    setIsGameOver(false);
-    setGameOverMessage("");
-    setIsTie(false);
+    setGameOverMessage(""),
+    setIsGameOver(false),
+    setPlayerSymbol(_player1Symbol),
+    setCells(new Array(9).fill("")),
+    setIsPlayer1Turn(true);
   };
 
   const checkForTie = (updatedCells: string[]) => {
