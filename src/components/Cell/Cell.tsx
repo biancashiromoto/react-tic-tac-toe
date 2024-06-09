@@ -51,13 +51,6 @@ const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
         setGameOverMessage(isPlayer1Turn ? 'Player 1 wins!' : 'Player 2 wins!')
       }
     }
-    if (isGameOver) {
-      setGameOverMessage(""),
-      setIsGameOver(false),
-      setPlayerSymbol(_player1Symbol),
-      setCells(new Array(9).fill("")),
-      setIsPlayer1Turn(true)
-    }
     changePlayer();
   };
 
