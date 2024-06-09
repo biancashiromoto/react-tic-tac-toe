@@ -16,7 +16,7 @@ To run this app, make sure you have Node.js installed on your computer and then 
 
 ## 🧪 Test coverage
 
-In the `src` directory, run the command `npm run test:coverage`.
+In the `src` directory, run the command `npm run coverage`.
 
 > 💬 If you have any suggestions or feedbacks, I would be happy to receive them through <a href="https://www.linkedin.com/in/bshiromoto/" target="_blank">LinkedIn</a>!
 
@@ -38,7 +38,7 @@ Para instalar esta aplicação, certifique-se de ter o Node.js instalado no seu 
 
 ## 🧪 Cobertura de testes
 
-No diretório `src`, rode o comando `npm run test:coverage`.
+No diretório `src`, rode o comando `npm run coverage`.
 
 > 💬 Se tiver alguma sugestão ou feedback, eu ficaria feliz em recebê-los pelo meu <a href="https://www.linkedin.com/in/bshiromoto/" target="_blank">LinkedIn</a>!
 
