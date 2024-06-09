@@ -10,8 +10,8 @@ const App = () => {
   const { _player1Symbol } = new Utils();
 
   const {
-    grids,
-    setGrids,
+    cells,
+    setCells,
     isGameOver,
     setIsGameOver,
     setIsPlayer1Turn,
@@ -23,19 +23,23 @@ const App = () => {
     setGameOverMessage(""),
     setIsGameOver(false),
     setPlayerSymbol(_player1Symbol),
-    setGrids(new Array(9).fill("")),
+    setCells(new Array(9).fill("")),
     setIsPlayer1Turn(true)
   }
 
   return (
-    <div className="App">
+    <div
+      className="App"
+      data-testid="app"
+    >
       <h1>Tic-tac-toe</h1>
       {!isGameOver && <PlayerDisplay />}
       <Board />
       <Button
-        label="Restart"
         className={isGameOver ? 'pulse restart-game-button' : 'restart-game-button'}
-        disabled={grids.every(grid => grid === "")}
+        dataTestId="restart-game-button"
+        disabled={cells.every(cell => cell === "")}
+        label="Restart"
         onClick={ restartGame }
       />
       {isGameOver && <MessageContainer />}
