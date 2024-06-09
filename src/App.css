@@ -29,6 +29,7 @@
   height: 100vh;
   text-align: center;
   user-select: none;
+  -webkit-user-select: none
 }
 
 h1 {
