@@ -10,18 +10,17 @@ const MessageContainer: React.FC = () => {
     isTie
   } = useContext(context);
 
-  const style = {
-    backgroundColor: isTie
-    ? 'var(--tie)'
-  : ((isPlayer1Turn)
-    ? 'var(--player2)'
-    : 'var(--player1)'),
+  const backgroundColor = (isTie: boolean): string => {
+    if (isTie) {
+      return "tie";
+    }
+    return `${isPlayer1Turn ? "player2" : "player1"}`;
   }
+  
   return (
     <div
-        className="message-container"
+        className={`message-container ${backgroundColor(isTie)}`}
         data-testid="message-container"
-        style={ style }
       >
         <h2>{gameOverMessage}</h2>
       </div>
