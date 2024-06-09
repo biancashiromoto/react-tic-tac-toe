@@ -1,3 +1,3 @@
 export type checkMoveTypes = {
-  (grids: string[], index: number): void
+  (cells: string[], index: number): void
 }

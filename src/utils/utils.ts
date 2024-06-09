@@ -1,5 +1,5 @@
 export class Utils {
-  public _grids: string[]  = new Array(9).fill("");
+  public _INITIAL_CELLS: string[]  = new Array(9).fill("");
   public _player1Symbol: string = "O";
   public _player2Symbol: string = "X";
   public _winningOptions: number[][] = [
@@ -17,27 +17,27 @@ export class Utils {
   ];
 
   /**
-   * Handles the grid in the current game when the square is clicked.
-   * @param index A number type that corresponds to the index in the grid array.
-   * @param grids  The grid array containing an empty string or the player's symbol.
+   * Handles the cell in the current game when the square is clicked.
+   * @param index A number type that corresponds to the index in the cell array.
+   * @param cells  The cell array containing an empty string or the player's symbol.
    * @param playerSymbol The current player's symbol.
-   * @returns The updated grids as an array containing an empty string or the player's symbol.
+   * @returns The updated cells as an array containing an empty string or the player's symbol.
    */
-  public handleMove = (index: number, grids: string[], playerSymbol: string): string[] => {
-    grids[index] = playerSymbol;
-    return grids;
+  public handleMove = (index: number, cells: string[], playerSymbol: string): string[] => {
+    cells[index] = playerSymbol;
+    return cells;
   };
 
   /**
    * Checks if the game ends in tie.
-   * @param grids The array corresponding to the grids in the current game.
-   * @returns True if every grid is filled.
+   * @param cells The array corresponding to the cells in the current game.
+   * @returns True if every cell is filled.
    */
-  public isTie = (grids: string[]): boolean => grids.every(grid => grid !== "");
+  public isTie = (cells: string[]): boolean => cells.every(cell => cell !== "");
 
   /**
-   * Resets the grids to an empty array.
+   * Resets the cells to an empty array.
    * @returns An array containing nine empty strings.
    */
-  public resetGrids = (): string[] => new Array(9).fill("");
+  public resetCells = (): string[] => new Array(9).fill("");
 }

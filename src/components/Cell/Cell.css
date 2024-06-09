@@ -1,6 +1,6 @@
 @import url('../../App.css');
 
-.square {
+.cell {
   align-items: center;
   border: solid 1px var(--white);
   display: flex;
@@ -10,23 +10,23 @@
   width: 75px;
 }
 
-.square:hover {
-  background-color: var(--square-hover);
+.cell:hover {
+  background-color: var(--cell-hover);
 }
 
-.square:nth-child(-n + 3) {
+.cell:nth-child(-n + 3) {
   border-top: none;
 }
 
-.square:nth-child(3n) {
+.cell:nth-child(3n) {
   border-right: none;
 }
 
-.square:nth-child(n + 7) {
+.cell:nth-child(n + 7) {
   border-bottom: none;
 }
 
-.square:nth-child(3n - 2) {
+.cell:nth-child(3n - 2) {
   border-left: none;
 }
 

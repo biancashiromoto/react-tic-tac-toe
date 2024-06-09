@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import player1Symbol from '../../assets/img/o-item.png';
 import player2Symbol from '../../assets/img/x-item.png';
 import './PlayerDisplay.css';
-import { PlayerDisplayPropsInterface } from '../../interfaces/Interfaces';
 import { Utils } from '../../utils/utils';
+import { context } from '../../context/context';
 
-const PlayerDisplay: React.FC<PlayerDisplayPropsInterface> = ({ isPlayer1Turn }: PlayerDisplayPropsInterface) => {
+const PlayerDisplay: React.FC = () => {
+
+  const { isPlayer1Turn } = useContext(context);
 
   const {
     _player1Symbol,
@@ -15,6 +17,7 @@ const PlayerDisplay: React.FC<PlayerDisplayPropsInterface> = ({ isPlayer1Turn }:
   return (
     <div
         className="player-display-container"
+        data-testid="player-display-container"
       >
         <img
           src={ isPlayer1Turn ? player1Symbol : player2Symbol }
