@@ -42,6 +42,15 @@ No diretório `src`, rode o comando `npm run coverage`.
 
 > 💬 Se tiver alguma sugestão ou feedback, eu ficaria feliz em recebê-los pelo meu <a href="https://www.linkedin.com/in/bshiromoto/" target="_blank">LinkedIn</a>!
 
+## 🎲 Demo
+
+<div align="center">
+
+<img src="./screenshots/tic-tac-toe.gif" />
+
+</div>
+
+
 <hr>
 
 ## 🛠️ Technologies used/Tecnologias utilizadas
