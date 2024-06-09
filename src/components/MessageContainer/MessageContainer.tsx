@@ -1,15 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import '../../App.css';
 import './MessageContainer.css';
-import { context } from '../../context/context';
 import usePlayerState from '../../hooks/usePlayerState';
+import useGameState from '../../hooks/useGameState';
 
 const MessageContainer: React.FC = () => {
-  const {
-    gameOverMessage,
-    isTie
-  } = useContext(context);
   const { isPlayer1Turn } = usePlayerState();
+  const { isTie, gameOverMessage } = useGameState();
 
   const addClassName = (isTie: boolean): string => {
     if (isTie) {

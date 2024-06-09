@@ -8,11 +8,14 @@ const useGameState = () => {
     setCells,
     isGameOver,
     setIsGameOver,
+    gameOverMessage,
     setGameOverMessage,
+    isTie,
     setIsTie,
     playerSymbol,
     setPlayerSymbol,
     setIsPlayer1Turn
+    isPlayer1Turn
   } = useContext(context);
 
   const {
@@ -42,7 +45,7 @@ const useGameState = () => {
       if (updatedCells[x] && updatedCells[x] === updatedCells[y] && updatedCells[x] === updatedCells[z]) {
         setIsGameOver(true);
         setIsTie(false);
-        setGameOverMessage(playerSymbol === "O" ? "Player 1 wins!" : "Player 2 wins!");
+        setGameOverMessage(isPlayer1Turn ? "Player 1 wins!" : "Player 2 wins!");
         return true;
       }
     }
@@ -57,7 +60,9 @@ const useGameState = () => {
     checkForWin,
     setCells,
     setIsGameOver,
+    gameOverMessage,
     setGameOverMessage,
+    isTie
   };
 }
 

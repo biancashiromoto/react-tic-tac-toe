@@ -9,6 +9,7 @@ const App = () => {
     resetGame,
     cells,
     isGameOver
+    resetGame
   } = useGameState();
 
   return (
