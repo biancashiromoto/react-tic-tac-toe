@@ -57,7 +57,7 @@
 
 1. Clone o repositório ou faça o <i>download</i> do arquivo zip.
 
-2. Abra o terinal e navegue até o diretório do projeto.
+2. Abra o terminal e navegue até o diretório do projeto.
 
 3. Execute o comando `npm install` para instalar as dependências.
 
