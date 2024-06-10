@@ -5,6 +5,7 @@ import './Cell.css';
 import { CellPropsInterface } from '../../interfaces/Interfaces';
 import { Utils } from '../../utils/utils';
 import { context } from '../../context/context';
+import { usePlayerState } from '../../hooks';
 
 const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
   const {
@@ -23,9 +24,10 @@ const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
     setGameOverMessage,
     setIsGameOver,
     setIsTie,
-    isPlayer1Turn,
     setCells
   } = useContext(context);
+
+  const { isPlayer1Turn } = usePlayerState();
 
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
 
