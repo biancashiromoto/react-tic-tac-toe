@@ -17,7 +17,8 @@ const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
     isGameOver,
     setIsGameOver,
     setIsTie,
-    setGameOverMessage
+    setGameOverMessage,
+    checkForTie
   } = useGameState();
 
   const {
@@ -27,7 +28,7 @@ const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
   } = usePlayerState();
 
   const { cells, setCells } = useCellState();
-  
+
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
 
   useEffect(() => {
@@ -48,14 +49,6 @@ const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
       }
     }
     switchPlayer();
-  };
-
-  const checkForTie = () => {
-    if (cells.every((cell) => cell !== "")) {
-      setIsGameOver(true),
-      setGameOverMessage("Tie!"),
-      setIsTie(true);
-    }
   };
 
   const handleClick = () => {
