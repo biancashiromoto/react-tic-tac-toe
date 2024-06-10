@@ -1,12 +1,11 @@
 import React from 'react';
 import '../../App.css';
 import './MessageContainer.css';
-import { useGameOverMessageState, useGameState, usePlayerState } from '../../hooks';
+import { useGameState, usePlayerState } from '../../hooks';
 
 const MessageContainer: React.FC = () => {
-  const { isTie } = useGameState();
+  const { isTie, gameOverMessage } = useGameState();
   const { isPlayer1Turn } = usePlayerState();
-  const { gameOverMessage } = useGameOverMessageState();
 
   const backgroundColor = (isTie: boolean): string => {
     if (isTie) {
