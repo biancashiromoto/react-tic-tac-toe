@@ -9,7 +9,6 @@ import { usePlayerState, useCellState, useGameState } from '../../hooks';
 const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
   const {
     _player2Symbol,
-    handleMove,
     _winningOptions
   } = new Utils();
 
@@ -23,11 +22,10 @@ const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
 
   const {
     isPlayer1Turn,
-    playerSymbol,
     switchPlayer
   } = usePlayerState();
 
-  const { cells, setCells } = useCellState();
+  const { cells, updateCells } = useCellState();
 
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
 
@@ -53,12 +51,7 @@ const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
 
   const handleClick = () => {
     if (isDisabled || cells[index]) return;
-    handleMove(index, cells, playerSymbol);
-    setCells(prevCells => {
-      const newCells = [...prevCells];
-      newCells[index] = playerSymbol;
-      return newCells;
-    });
+    updateCells(index);
     checkMove(cells);
     setIsDisabled(true);
   };
