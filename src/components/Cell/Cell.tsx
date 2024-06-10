@@ -4,7 +4,7 @@ import player2Symbol from '../../assets/img/x-item.png';
 import './Cell.css';
 import { CellPropsInterface } from '../../interfaces/Interfaces';
 import { Utils } from '../../utils/utils';
-import { useGameOverMessageState, usePlayerState, useCellState, useGameState } from '../../hooks';
+import { usePlayerState, useCellState, useGameState } from '../../hooks';
 
 const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
   const {
@@ -14,8 +14,12 @@ const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
     _winningOptions
   } = new Utils();
 
-  const { setGameOverMessage } = useGameOverMessageState();
-  const { isGameOver, setIsGameOver, setIsTie } = useGameState();
+  const {
+    isGameOver,
+    setIsGameOver,
+    setIsTie,
+    setGameOverMessage
+  } = useGameState();
   const { isPlayer1Turn, setIsPlayer1Turn, playerSymbol, setPlayerSymbol } = usePlayerState();
   const { cells, setCells } = useCellState();
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
