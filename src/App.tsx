@@ -5,13 +5,13 @@ import MessageContainer from './components/MessageContainer/MessageContainer';
 import { Utils } from './utils/utils';
 import PlayerDisplay from './components/PlayerDisplay/PlayerDisplay';
 import { context } from './context/context';
+import { useCellState } from './hooks';
 
 const App = () => {
   const { _player1Symbol } = new Utils();
+  const { cells, setCells } = useCellState();
 
   const {
-    cells,
-    setCells,
     isGameOver,
     setIsGameOver,
     setIsPlayer1Turn,
