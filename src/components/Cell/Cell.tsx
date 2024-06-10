@@ -8,7 +8,6 @@ import { usePlayerState, useCellState, useGameState } from '../../hooks';
 
 const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
   const {
-    _player1Symbol,
     _player2Symbol,
     handleMove,
     _winningOptions
@@ -20,8 +19,15 @@ const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
     setIsTie,
     setGameOverMessage
   } = useGameState();
-  const { isPlayer1Turn, setIsPlayer1Turn, playerSymbol, setPlayerSymbol } = usePlayerState();
+
+  const {
+    isPlayer1Turn,
+    playerSymbol,
+    switchPlayer
+  } = usePlayerState();
+
   const { cells, setCells } = useCellState();
+  
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
 
   useEffect(() => {
@@ -29,11 +35,6 @@ const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
       setIsDisabled(false);
     }
   }, [isGameOver, cells]);
-
-  const changePlayer = () => {
-    setIsPlayer1Turn(prevState => !prevState);
-    setPlayerSymbol(prevState => prevState === _player1Symbol ? _player2Symbol : _player1Symbol);
-  };
 
   const checkMove = (cells: string[]) => {
     checkForTie();
@@ -46,7 +47,7 @@ const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
         setGameOverMessage(isPlayer1Turn ? 'Player 1 wins!' : 'Player 2 wins!')
       }
     }
-    changePlayer();
+    switchPlayer();
   };
 
   const checkForTie = () => {
