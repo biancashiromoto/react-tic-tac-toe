@@ -18,16 +18,13 @@ const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
 
   const {
     isGameOver,
-    playerSymbol,
-    setIsPlayer1Turn,
-    setPlayerSymbol,
     setIsGameOver,
     setIsTie,
   } = useContext(context);
 
   const { setGameOverMessage } = useGameOverMessageState();
 
-  const { isPlayer1Turn } = usePlayerState();
+  const { isPlayer1Turn, setIsPlayer1Turn, playerSymbol, setPlayerSymbol } = usePlayerState();
   const { cells, setCells } = useCellState();
 
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
