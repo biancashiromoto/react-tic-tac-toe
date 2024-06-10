@@ -3,14 +3,13 @@ import Button from './components/Button/Button';
 import MessageContainer from './components/MessageContainer/MessageContainer';
 import { Utils } from './utils/utils';
 import PlayerDisplay from './components/PlayerDisplay/PlayerDisplay';
-import { useCellState, useGameOverMessageState, usePlayerState, useGameState } from './hooks';
+import { useCellState, usePlayerState, useGameState } from './hooks';
 
 const App = () => {
   const { _player1Symbol } = new Utils();
   const { cells, setCells } = useCellState();
-  const { setGameOverMessage } = useGameOverMessageState();
   const { setIsPlayer1Turn, setPlayerSymbol } = usePlayerState();
-  const { isGameOver, setIsGameOver } = useGameState();
+  const { isGameOver, setIsGameOver, setGameOverMessage } = useGameState();
 
   const restartGame = () => {
     setGameOverMessage(""),
