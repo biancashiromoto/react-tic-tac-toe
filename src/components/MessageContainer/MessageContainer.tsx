@@ -1,14 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import '../../App.css';
 import './MessageContainer.css';
-import { context } from '../../context/context';
-import { useGameOverMessageState, usePlayerState } from '../../hooks';
+import { useGameOverMessageState, useGameState, usePlayerState } from '../../hooks';
 
 const MessageContainer: React.FC = () => {
-  const {
-    isTie
-  } = useContext(context);
-
+  const { isTie } = useGameState();
   const { isPlayer1Turn } = usePlayerState();
   const { gameOverMessage } = useGameOverMessageState();
 
