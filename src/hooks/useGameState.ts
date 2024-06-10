@@ -12,6 +12,7 @@ export const useGameState = () => {
     setIsTie,
     gameOverMessage,
     setGameOverMessage,
+    cells,
   } = useContext(context);
   const { setPlayerSymbol, setIsPlayer1Turn } = usePlayerState();
   const { setCells } = useCellState();
@@ -25,6 +26,14 @@ export const useGameState = () => {
     setIsPlayer1Turn(true)
   }
 
+  const checkForTie = () => {
+    if (cells.every((cell) => cell !== "")) {
+      setIsGameOver(true),
+      setGameOverMessage("Tie!"),
+      setIsTie(true);
+    }
+  }
+
   return {
     isGameOver,
     setIsGameOver,
@@ -33,5 +42,6 @@ export const useGameState = () => {
     gameOverMessage,
     setGameOverMessage,
     resetGame,
+    checkForTie,
   };
 }
