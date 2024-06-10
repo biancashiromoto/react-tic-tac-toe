@@ -5,7 +5,7 @@ import './Cell.css';
 import { CellPropsInterface } from '../../interfaces/Interfaces';
 import { Utils } from '../../utils/utils';
 import { context } from '../../context/context';
-import { usePlayerState } from '../../hooks';
+import { useGameOverMessageState, usePlayerState } from '../../hooks';
 import { useCellState } from '../../hooks';
 
 const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
@@ -21,10 +21,11 @@ const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
     playerSymbol,
     setIsPlayer1Turn,
     setPlayerSymbol,
-    setGameOverMessage,
     setIsGameOver,
     setIsTie,
   } = useContext(context);
+
+  const { setGameOverMessage } = useGameOverMessageState();
 
   const { isPlayer1Turn } = usePlayerState();
   const { cells, setCells } = useCellState();
