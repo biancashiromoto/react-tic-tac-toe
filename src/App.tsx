@@ -1,23 +1,16 @@
-import { useContext } from 'react';
 import Board from './components/Board/Board';
 import Button from './components/Button/Button';
 import MessageContainer from './components/MessageContainer/MessageContainer';
 import { Utils } from './utils/utils';
 import PlayerDisplay from './components/PlayerDisplay/PlayerDisplay';
-import { context } from './context/context';
-import { useCellState, useGameOverMessageState } from './hooks';
+import { useCellState, useGameOverMessageState, usePlayerState, useGameState } from './hooks';
 
 const App = () => {
   const { _player1Symbol } = new Utils();
   const { cells, setCells } = useCellState();
   const { setGameOverMessage } = useGameOverMessageState();
-
-  const {
-    isGameOver,
-    setIsGameOver,
-    setIsPlayer1Turn,
-    setPlayerSymbol,
-  } = useContext(context);
+  const { setIsPlayer1Turn, setPlayerSymbol } = usePlayerState();
+  const { isGameOver, setIsGameOver } = useGameState();
 
   const restartGame = () => {
     setGameOverMessage(""),
