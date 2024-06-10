@@ -7,6 +7,8 @@ export const useGameState = () => {
     setIsGameOver,
     isTie,
     setIsTie,
+    gameOverMessage,
+    setGameOverMessage,
   } = useContext(context);
 
   return {
@@ -14,5 +16,7 @@ export const useGameState = () => {
     setIsGameOver,
     isTie,
     setIsTie,
+    gameOverMessage,
+    setGameOverMessage,
   };
 }
