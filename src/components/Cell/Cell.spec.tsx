@@ -13,9 +13,10 @@ describe("Component Cell", () => {
 
   beforeEach(() => {
     render(
-          <Provider>
-            <App />
-          </Provider>);
+      <Provider>
+        <App />
+      </Provider>
+    );
   });
 
   afterEach(() => fireEvent.click(screen.getByTestId("restart-game-button")));
@@ -29,6 +30,7 @@ describe("Component Cell", () => {
     
     fireEvent.click(cells[0]);
     expect(screen.getByText(/player 2/i)).toBeInTheDocument();
+    screen.debug(cells[0])
     expect(cells[0]).toHaveClass("disabled");
     expect(cells[0].firstChild).toHaveAttribute("src", player1Symbol);
     expect(cells[0].firstChild).toHaveAttribute("alt", _player1Symbol);
