@@ -4,38 +4,55 @@ import player2Symbol from '../../assets/img/x-item.png';
 import './Cell.css';
 import { CellPropsInterface } from '../../interfaces/Interfaces';
 import { Utils } from '../../utils/utils';
-import usePlayerState from '../../hooks/usePlayerState';
-import useGameState from '../../hooks/useGameState';
+import { usePlayerState, useCellState, useGameState } from '../../hooks';
 
 const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
-  const { _player2Symbol } = new Utils();
+  const {
+    _player2Symbol,
+    _winningOptions
+  } = new Utils();
+
+  const {
+    isGameOver,
+    setIsGameOver,
+    setIsTie,
+    setGameOverMessage,
+    checkForTie
+  } = useGameState();
+
+  const {
+    isPlayer1Turn,
+    switchPlayer
+  } = usePlayerState();
+
+  const { cells, updateCells } = useCellState();
 
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
-  const { playerSymbol, switchPlayer } = usePlayerState();
-  const {
-    cells,
-    setCells,
-    checkForTie,
-    checkForWin,
-    isGameOver
-  } = useGameState();
 
   useEffect(() => {
     if (isGameOver || cells.every(cell => cell === "")) {
       setIsDisabled(false);
-    }    
+    }
   }, [isGameOver, cells]);
+
+  const checkMove = (cells: string[]) => {
+    checkForTie();
+  
+    for (let index = 0; index < _winningOptions.length; index += 1) {
+      const [x, y, z] = _winningOptions[index];
+      if (cells[x] && cells[x] === cells[y] && cells[x] === cells[z]) {
+        setIsGameOver(true),
+        setIsTie(false),
+        setGameOverMessage(isPlayer1Turn ? 'Player 1 wins!' : 'Player 2 wins!')
+      }
+    }
+    switchPlayer();
+  };
 
   const handleClick = () => {
     if (isDisabled || cells[index]) return;
-    const newCells = [...cells];
-    newCells[index] = playerSymbol;
-    setCells(newCells);
-
-    if (!checkForWin(newCells)) {
-      checkForTie(newCells);
-      switchPlayer();
-    }
+    updateCells(index);
+    checkMove(cells);
     setIsDisabled(true);
   };
 

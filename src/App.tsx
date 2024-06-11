@@ -2,14 +2,11 @@ import Board from './components/Board/Board';
 import Button from './components/Button/Button';
 import MessageContainer from './components/MessageContainer/MessageContainer';
 import PlayerDisplay from './components/PlayerDisplay/PlayerDisplay';
-import useGameState from './hooks/useGameState';
+import { useCellState, useGameState } from './hooks';
 
 const App = () => {
-  const {
-    cells,
-    isGameOver,
-    resetGame
-  } = useGameState();
+  const { cells } = useCellState();
+  const { isGameOver, resetGame } = useGameState();
 
   return (
     <div
