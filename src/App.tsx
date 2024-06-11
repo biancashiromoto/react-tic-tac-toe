@@ -1,31 +1,12 @@
-import { useContext } from 'react';
 import Board from './components/Board/Board';
 import Button from './components/Button/Button';
 import MessageContainer from './components/MessageContainer/MessageContainer';
-import { Utils } from './utils/utils';
 import PlayerDisplay from './components/PlayerDisplay/PlayerDisplay';
-import { context } from './context/context';
+import { useCellState, useGameState } from './hooks';
 
 const App = () => {
-  const { _player1Symbol } = new Utils();
-
-  const {
-    cells,
-    setCells,
-    isGameOver,
-    setIsGameOver,
-    setIsPlayer1Turn,
-    setPlayerSymbol,
-    setGameOverMessage,
-  } = useContext(context);
-
-  const restartGame = () => {
-    setGameOverMessage(""),
-    setIsGameOver(false),
-    setPlayerSymbol(_player1Symbol),
-    setCells(new Array(9).fill("")),
-    setIsPlayer1Turn(true)
-  }
+  const { cells } = useCellState();
+  const { isGameOver, resetGame } = useGameState();
 
   return (
     <div
@@ -40,7 +21,7 @@ const App = () => {
         dataTestId="restart-game-button"
         disabled={cells.every(cell => cell === "")}
         label="Restart"
-        onClick={ restartGame }
+        onClick={ resetGame }
       />
       {isGameOver && <MessageContainer />}
     </div>

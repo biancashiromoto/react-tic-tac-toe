@@ -1,13 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import player1Symbol from '../../assets/img/o-item.png';
 import player2Symbol from '../../assets/img/x-item.png';
 import './PlayerDisplay.css';
 import { Utils } from '../../utils/utils';
-import { context } from '../../context/context';
+import { usePlayerState } from '../../hooks';
 
 const PlayerDisplay: React.FC = () => {
-
-  const { isPlayer1Turn } = useContext(context);
+  const { isPlayer1Turn } = usePlayerState();
 
   const {
     _player1Symbol,

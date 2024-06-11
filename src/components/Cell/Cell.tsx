@@ -1,31 +1,31 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import player1Symbol from '../../assets/img/o-item.png';
 import player2Symbol from '../../assets/img/x-item.png';
 import './Cell.css';
 import { CellPropsInterface } from '../../interfaces/Interfaces';
 import { Utils } from '../../utils/utils';
-import { context } from '../../context/context';
+import { usePlayerState, useCellState, useGameState } from '../../hooks';
 
 const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
   const {
-    _player1Symbol,
     _player2Symbol,
-    handleMove,
     _winningOptions
   } = new Utils();
 
   const {
-    cells,
     isGameOver,
-    playerSymbol,
-    setIsPlayer1Turn,
-    setPlayerSymbol,
-    setGameOverMessage,
     setIsGameOver,
     setIsTie,
+    setGameOverMessage,
+    checkForTie
+  } = useGameState();
+
+  const {
     isPlayer1Turn,
-    setCells
-  } = useContext(context);
+    switchPlayer
+  } = usePlayerState();
+
+  const { cells, updateCells } = useCellState();
 
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
 
@@ -34,11 +34,6 @@ const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
       setIsDisabled(false);
     }
   }, [isGameOver, cells]);
-
-  const changePlayer = () => {
-    setIsPlayer1Turn(prevState => !prevState);
-    setPlayerSymbol(prevState => prevState === _player1Symbol ? _player2Symbol : _player1Symbol);
-  };
 
   const checkMove = (cells: string[]) => {
     checkForTie();
@@ -51,25 +46,12 @@ const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
         setGameOverMessage(isPlayer1Turn ? 'Player 1 wins!' : 'Player 2 wins!')
       }
     }
-    changePlayer();
-  };
-
-  const checkForTie = () => {
-    if (cells.every((cell) => cell !== "")) {
-      setIsGameOver(true),
-      setGameOverMessage("Tie!"),
-      setIsTie(true);
-    }
+    switchPlayer();
   };
 
   const handleClick = () => {
     if (isDisabled || cells[index]) return;
-    handleMove(index, cells, playerSymbol);
-    setCells(prevCells => {
-      const newCells = [...prevCells];
-      newCells[index] = playerSymbol;
-      return newCells;
-    });
+    updateCells(index);
     checkMove(cells);
     setIsDisabled(true);
   };
