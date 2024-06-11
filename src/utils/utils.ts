@@ -27,17 +27,4 @@ export class Utils {
     cells[index] = playerSymbol;
     return cells;
   };
-
-  /**
-   * Checks if the game ends in tie.
-   * @param cells The array corresponding to the cells in the current game.
-   * @returns True if every cell is filled.
-   */
-  public isTie = (cells: string[]): boolean => cells.every(cell => cell !== "");
-
-  /**
-   * Resets the cells to an empty array.
-   * @returns An array containing nine empty strings.
-   */
-  public resetCells = (): string[] => new Array(9).fill("");
 }
