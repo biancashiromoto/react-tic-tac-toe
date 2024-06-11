@@ -14,7 +14,7 @@ export const useGameState = () => {
     setGameOverMessage,
     cells,
   } = useContext(context);
-  const { setPlayerSymbol, setIsPlayer1Turn } = usePlayerState();
+  const { setPlayerSymbol, isPlayer1Turn, setIsPlayer1Turn } = usePlayerState();
   const { setCells } = useCellState();
   const { _player1Symbol } = new Utils();
 
@@ -34,6 +34,13 @@ export const useGameState = () => {
     }
   }
 
+  const addClassName = () => {
+    if (isTie) {
+      return "tie";
+    }
+    return `${isPlayer1Turn ? "player2" : "player1"}`;
+  }
+
   return {
     isGameOver,
     setIsGameOver,
@@ -43,5 +50,6 @@ export const useGameState = () => {
     setGameOverMessage,
     resetGame,
     checkForTie,
+    addClassName
   };
 }
