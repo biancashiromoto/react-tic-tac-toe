@@ -1,22 +1,14 @@
 import React from 'react';
 import '../../App.css';
 import './MessageContainer.css';
-import { useGameState, usePlayerState } from '../../hooks';
+import { useGameState } from '../../hooks';
 
 const MessageContainer: React.FC = () => {
-  const { isTie, gameOverMessage } = useGameState();
-  const { isPlayer1Turn } = usePlayerState();
-
-  const backgroundColor = (isTie: boolean): string => {
-    if (isTie) {
-      return "tie";
-    }
-    return `${isPlayer1Turn ? "player2" : "player1"}`;
-  }
+  const { gameOverMessage, addClassName } = useGameState();
   
   return (
     <div
-        className={`message-container ${backgroundColor(isTie)}`}
+        className={`message-container ${addClassName()}`}
         data-testid="message-container"
       >
         <h2>{gameOverMessage}</h2>
