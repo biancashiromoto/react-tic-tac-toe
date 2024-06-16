@@ -10,12 +10,12 @@ const {
 
 const Provider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
-  const [cells, setCells] = useState(_INITIAL_CELLS);
-  const [isGameOver, setIsGameOver] = useState(false);
-  const [isPlayer1Turn, setIsPlayer1Turn] = useState(true);
-  const [playerSymbol, setPlayerSymbol] = useState(_player1Symbol);
-  const [gameOverMessage, setGameOverMessage] = useState("");
-  const [isTie, setIsTie] = useState(false);
+  const [cells, setCells] = useState<string[]>(_INITIAL_CELLS);
+  const [isGameOver, setIsGameOver] = useState<boolean>(false);
+  const [isPlayer1Turn, setIsPlayer1Turn] = useState<boolean>(true);
+  const [playerSymbol, setPlayerSymbol] = useState<string>(_player1Symbol);
+  const [gameOverMessage, setGameOverMessage] = useState<string>("");
+  const [isTie, setIsTie] = useState<boolean>(false);
 
   const value: ContextProps = {
     cells,
