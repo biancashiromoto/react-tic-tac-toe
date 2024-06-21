@@ -5,6 +5,7 @@ import player1Symbol from "../../assets/img/o-item.png";
 import player2Symbol from "../../assets/img/x-item.png";
 import { Utils } from "../../utils/utils";
 
+let cells: Element[];
 describe("Component Cell", () => {
   const {
     _player1Symbol,
@@ -12,19 +13,16 @@ describe("Component Cell", () => {
   } = new Utils();
 
   beforeEach(() => {
-    render(
-      <Provider>
-        <App />
-      </Provider>
-    );
+    const { getAllByTestId } = render(
+          <Provider>
+            <App />
+          </Provider>);
+    cells = getAllByTestId("cell");
   });
 
   afterEach(() => fireEvent.click(screen.getByTestId("restart-game-button")));
   
-  it("should correctly be cleaned when game is restarted", async () => {
-    let cells;
-    cells = screen.getAllByTestId("cell");
-    
+  it("should correctly be restored when game is restarted", async () => {    
     expect(cells[0]).not.toHaveClass("disabled");
     expect(cells[1]).not.toHaveClass("disabled");
     
