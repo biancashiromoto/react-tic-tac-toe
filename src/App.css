@@ -6,7 +6,6 @@
 }
 
 :root {
-
   --background-color: #05313f;
   --button-disabled: #a14646;
   --button-enabled: #1bc537;
@@ -28,8 +27,8 @@
   color: var(--white);
   height: 100vh;
   text-align: center;
+  -webkit-user-select: none;
   user-select: none;
-  -webkit-user-select: none
 }
 
 h1 {
