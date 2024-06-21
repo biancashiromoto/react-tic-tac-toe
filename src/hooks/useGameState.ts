@@ -2,7 +2,6 @@ import { useContext } from "react"
 import { context } from "../context/context"
 import { usePlayerState } from "./usePlayerState";
 import { Utils } from "../utils/utils";
-import { useCellState } from "./useCellState";
 
 export const useGameState = () => {
   const { 
@@ -13,9 +12,9 @@ export const useGameState = () => {
     gameOverMessage,
     setGameOverMessage,
     cells,
+    setCells,
   } = useContext(context);
   const { setPlayerSymbol, isPlayer1Turn, setIsPlayer1Turn } = usePlayerState();
-  const { setCells } = useCellState();
   const { _player1Symbol } = new Utils();
 
   const resetGame = () => {
