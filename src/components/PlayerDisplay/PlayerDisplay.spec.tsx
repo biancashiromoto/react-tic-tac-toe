@@ -43,8 +43,6 @@ describe("Component PlayerDisplay", () => {
     fireEvent.click(screen.getByTestId("restart-game-button"));
     expect(container).toHaveTextContent(/player 1/i);
   });
-
-  it("should set the current player as player 1 after player 2 wins", () => {
     
   it("should set the current player as player 1 after player 2 wins", () => {
     const container = screen.getByTestId("player-display-container");
@@ -57,6 +55,5 @@ describe("Component PlayerDisplay", () => {
     fireEvent.click(cells[8]);
     fireEvent.click(screen.getByTestId("restart-game-button"));
     expect(container).toHaveTextContent(/player 1/i);
-  });
   });
 });
