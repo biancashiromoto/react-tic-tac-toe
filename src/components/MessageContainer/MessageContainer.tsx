@@ -1,25 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import '../../App.css';
 import './MessageContainer.css';
-import { context } from '../../context/context';
+import { useGameState } from '../../hooks';
 
 const MessageContainer: React.FC = () => {
-  const {
-    isPlayer1Turn,
-    gameOverMessage,
-    isTie
-  } = useContext(context);
-
-  const backgroundColor = (isTie: boolean): string => {
-    if (isTie) {
-      return "tie";
-    }
-    return `${isPlayer1Turn ? "player2" : "player1"}`;
-  }
+  const { gameOverMessage, addClassName } = useGameState();
   
   return (
     <div
-        className={`message-container ${backgroundColor(isTie)}`}
+        className={`message-container ${addClassName()}`}
         data-testid="message-container"
       >
         <h2>{gameOverMessage}</h2>
