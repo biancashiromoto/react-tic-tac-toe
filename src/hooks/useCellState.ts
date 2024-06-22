@@ -12,6 +12,7 @@ export const useCellState = () => {
     setCells,
     isGameOver,
     isMuted,
+    gameOverMessage
   } = useContext(context);
   const { playerSymbol, switchPlayer, isPlayer1Turn } = usePlayerState();
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
@@ -52,7 +53,7 @@ export const useCellState = () => {
   };
 
   const handleClick = (index: number) => {
-    if (isDisabled || cells[index]) return;
+    if (isDisabled || cells[index] || gameOverMessage !== "") return;
     updateCells(index);
     checkMove(cells);
     setIsDisabled(true);
