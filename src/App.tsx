@@ -1,17 +1,17 @@
 import { useContext } from 'react';
 import Board from './components/Board/Board';
-// import Button from './components/Button/Button';
 import MessageContainer from './components/MessageContainer/MessageContainer';
 import PlayerDisplay from './components/PlayerDisplay/PlayerDisplay';
 import { useCellState, useGameState } from './hooks';
 import { context } from './context/context';
 import { Button } from './components/Button';
+import { GoMute, GoUnmute } from "react-icons/go";
 
 const App = () => {
   const { cells } = useCellState();
   const { isGameOver, resetGame } = useGameState();
   const { isMuted, setIsMuted } = useContext(context);
-
+  
   return (
     <div
       className="App"
@@ -23,7 +23,7 @@ const App = () => {
         dataTestId="toggle-mute-button"
         disabled={false}
       >
-        <Button.Label label={isMuted ? "UNMUTE" : "MUTE"} />
+        <Button.Icon icon={isMuted ? GoMute : GoUnmute} />
       </Button.Root>
       <h1>Tic-tac-toe</h1>
       {!isGameOver && <PlayerDisplay />}
