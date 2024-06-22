@@ -18,12 +18,15 @@ const App = () => {
       data-testid="app"
     >
       <Button.Root
-        className="toggle-mute-button"
+        className="toggle-mute__button"
         onClick={() => setIsMuted(prevState => !prevState)}
         dataTestId="toggle-mute-button"
         disabled={false}
       >
-        <Button.Icon icon={isMuted ? GoMute : GoUnmute} />
+        <Button.Icon
+          className="toggle-mute__button--icon"
+          icon={isMuted ? GoMute : GoUnmute}
+        />
       </Button.Root>
       <h1>Tic-tac-toe</h1>
       {!isGameOver && <PlayerDisplay />}
