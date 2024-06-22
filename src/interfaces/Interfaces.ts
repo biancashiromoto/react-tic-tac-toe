@@ -2,15 +2,6 @@ export interface CellPropsInterface {
   index: number;
 }
 
-export interface ButtonPropsInterface {
-  className?: string;
-  dataTestId?: string;
-  disabled?: boolean;
-  label: string;
-  onClick: () => void;
-  type?: string;
-}
-
 export interface ContextProps {
   cells: string[];
   setCells: React.Dispatch<React.SetStateAction<string[]>>;
@@ -24,4 +15,7 @@ export interface ContextProps {
   setGameOverMessage: React.Dispatch<React.SetStateAction<string>>;
   isTie: boolean;
   setIsTie: React.Dispatch<React.SetStateAction<boolean>>;
+  isMuted: boolean,
+  setIsMuted: React.Dispatch<React.SetStateAction<boolean>>;
+  toggleMute: () => void;
 }

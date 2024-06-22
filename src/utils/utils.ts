@@ -15,4 +15,13 @@ export class Utils {
     [0, 4, 8],
     [2, 4, 6]
   ];
+
+  /**
+   * Plays an mp3 audio.
+   * @param path A string containig the mp3 audio path.
+   */
+  public playSound(path: string) {
+    const sound = new Audio(path);
+    sound.play();
+  }
 }

@@ -3,14 +3,15 @@ import { context } from "../context/context"
 import { usePlayerState } from "./usePlayerState";
 import { useGameState } from "./useGameState";
 import { Utils } from "../utils/utils";
+import soundPath from "../assets/sounds/click.mp3";
 
-const { _winningOptions } = new Utils();
-
+const { _winningOptions, playSound } = new Utils();
 export const useCellState = () => {
   const { 
     cells,
     setCells,
-    isGameOver
+    isGameOver,
+    isMuted,
   } = useContext(context);
   const { playerSymbol, switchPlayer, isPlayer1Turn } = usePlayerState();
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
@@ -20,7 +21,7 @@ export const useCellState = () => {
     setGameOverMessage,
     checkForTie,
   } = useGameState();
-
+  
   const updateCells = (index: number) => {
     cells[index] = playerSymbol;
     setCells(prevCells => {
@@ -55,7 +56,10 @@ export const useCellState = () => {
     updateCells(index);
     checkMove(cells);
     setIsDisabled(true);
+    if (!isMuted) {
+      playSound(soundPath);
+    }
   };
-
+  
   return { cells, setCells, updateCells, isDisabled, setIsDisabled, checkMove, handleClick };
 }

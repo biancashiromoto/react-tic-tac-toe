@@ -16,6 +16,11 @@ const Provider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [playerSymbol, setPlayerSymbol] = useState<string>(_player1Symbol);
   const [gameOverMessage, setGameOverMessage] = useState<string>("");
   const [isTie, setIsTie] = useState<boolean>(false);
+  const [isMuted, setIsMuted] = useState<boolean>(false);
+
+  const toggleMute = () => {
+    setIsMuted(prevState => !prevState);
+  }
 
   const value: ContextProps = {
     cells,
@@ -29,7 +34,10 @@ const Provider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     gameOverMessage,
     setGameOverMessage,
     isTie,
-    setIsTie
+    setIsTie,
+    isMuted,
+    setIsMuted,
+    toggleMute
   };
 
   return (
