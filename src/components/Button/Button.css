@@ -29,10 +29,18 @@
 .toggle-mute__button {
   background-color: unset;
   border: none;
+  border-radius: 100%;
+  height: 35px;
+  margin: 25px;
+  transition: 350ms;
+  width: 35px;
+}
+
+.toggle-mute__button:hover {
+  background-color: #0b7191;
 }
 
 .toggle-mute__button--icon {
   color: white;
   font-size: 25px;
-  padding-top: 20px;
 }
