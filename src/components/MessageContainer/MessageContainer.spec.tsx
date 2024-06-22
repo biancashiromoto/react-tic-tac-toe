@@ -35,6 +35,7 @@ describe("Component MessageContainer", () => {
   });
   
   it("should display the correct message if game ends in tie", async () => {
+    fireEvent.click(screen.getByTestId("restart-game-button"));
     const cells = screen.getAllByTestId("cell");
       fireEvent.click(cells[0]);
       fireEvent.click(cells[3]);
