@@ -13,7 +13,7 @@
   position: fixed;
   transform: translateX(-50%);
   transition: 250ms;
-  top: 220px;
+  top: 335px;
   opacity: 0;
   width: 180px;
 }
