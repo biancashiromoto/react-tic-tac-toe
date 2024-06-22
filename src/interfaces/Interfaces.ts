@@ -2,15 +2,6 @@ export interface CellPropsInterface {
   index: number;
 }
 
-export interface ButtonPropsInterface {
-  className?: string;
-  dataTestId?: string;
-  disabled?: boolean;
-  label: string;
-  onClick: () => void;
-  type?: string;
-}
-
 export interface ContextProps {
   cells: string[];
   setCells: React.Dispatch<React.SetStateAction<string[]>>;
