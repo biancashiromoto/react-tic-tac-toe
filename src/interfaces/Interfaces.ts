@@ -24,4 +24,7 @@ export interface ContextProps {
   setGameOverMessage: React.Dispatch<React.SetStateAction<string>>;
   isTie: boolean;
   setIsTie: React.Dispatch<React.SetStateAction<boolean>>;
+  isMuted: boolean,
+  setIsMuted: React.Dispatch<React.SetStateAction<boolean>>;
+  toggleMute: () => void;
 }
