@@ -25,10 +25,7 @@
 .App {
   background-color: var(--background-color);
   color: var(--white);
-  height: 100vh;
   text-align: center;
-  -webkit-user-select: none;
-  user-select: none;
 }
 
 h1 {
