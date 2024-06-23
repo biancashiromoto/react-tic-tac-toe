@@ -79,7 +79,12 @@ h1::after {
 }
 
 .game__container {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 50px
+  gap: 50px;
+}
+
+.board-message__container {
+  position: relative;
 }
