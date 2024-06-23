@@ -10,9 +10,12 @@
   height: 180px;
   justify-content: center;
   transition: 250ms;
-  position: absolute;
-  margin: 25px 115px;
+  position:absolute;
+  top: 10%;
+  left: 50%;
+  margin: auto;
   opacity: 0;
+  transform: translateX(-50%);
   width: 180px;
 }
 
