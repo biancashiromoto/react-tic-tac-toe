@@ -9,11 +9,9 @@
   gap: 20px;
   height: 180px;
   justify-content: center;
-  left: 50%;
-  position: fixed;
-  transform: translateX(-50%);
   transition: 250ms;
-  top: 270px;
+  position: absolute;
+  margin: 25px 115px;
   opacity: 0;
   width: 180px;
 }
