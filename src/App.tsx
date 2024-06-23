@@ -9,8 +9,8 @@ import { GoMute, GoUnmute } from "react-icons/go";
 
 const App = () => {
   const { cells } = useCellState();
-  const { isGameOver, resetGame } = useGameState();
-  const { isMuted, setIsMuted } = useContext(context);
+  const { isGameOver, resetGame, toggleMute } = useGameState();
+  const { isMuted } = useContext(context);
   
   return (
     <div
@@ -19,8 +19,8 @@ const App = () => {
     >
       <Button.Root
         className="toggle-mute__button"
-        onClick={() => setIsMuted(prevState => !prevState)}
-        dataTestId="toggle-mute-button"
+        onClick={() => toggleMute()}
+        dataTestId="toggle-mute__button"
         disabled={false}
       >
         <Button.Icon
