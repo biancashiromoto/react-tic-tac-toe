@@ -27,7 +27,6 @@ label:nth-of-type(3n - 2) {
   align-items: center;
   display: flex;
   justify-content: center;
-  position: relative;
   transition: 300ms;
   opacity: 0%;
 }
