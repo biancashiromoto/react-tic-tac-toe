@@ -18,10 +18,6 @@ const Provider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isTie, setIsTie] = useState<boolean>(false);
   const [isMuted, setIsMuted] = useState<boolean>(false);
 
-  const toggleMute = () => {
-    setIsMuted(prevState => !prevState);
-  }
-
   const value: ContextProps = {
     cells,
     setCells,
@@ -37,7 +33,6 @@ const Provider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     setIsTie,
     isMuted,
     setIsMuted,
-    toggleMute
   };
 
   return (

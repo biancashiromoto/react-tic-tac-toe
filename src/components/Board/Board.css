@@ -5,6 +5,6 @@
   display: grid;
   grid-template-columns: repeat(3, auto);
   margin: auto;
-  padding: 100px;
+  padding: 75px;
   width: min-content;
 }

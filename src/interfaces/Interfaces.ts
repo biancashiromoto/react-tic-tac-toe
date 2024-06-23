@@ -17,5 +17,4 @@ export interface ContextProps {
   setIsTie: React.Dispatch<React.SetStateAction<boolean>>;
   isMuted: boolean,
   setIsMuted: React.Dispatch<React.SetStateAction<boolean>>;
-  toggleMute: () => void;
 }

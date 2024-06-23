@@ -4,8 +4,9 @@ import Provider from "../../context/Provider";
 import player1Symbol from "../../assets/img/o-item.png";
 import player2Symbol from "../../assets/img/x-item.png";
 import { Utils } from "../../utils/utils";
+// import { vi } from 'vitest';
+// import soundPath from "../assets/sounds/click.mp3";
 
-let cells: Element[];
 describe("Component Cell", () => {
   const {
     _player1Symbol,
@@ -13,16 +14,18 @@ describe("Component Cell", () => {
   } = new Utils();
 
   beforeEach(() => {
-    const { getAllByTestId } = render(
-          <Provider>
-            <App />
-          </Provider>);
-    cells = getAllByTestId("cell");
+    render(
+      <Provider>
+        <App />
+      </Provider>
+    );
   });
 
   afterEach(() => fireEvent.click(screen.getByTestId("restart-game-button")));
   
-  it("should correctly be restored when game is restarted", async () => {    
+  it("should correctly be restored when game is restarted", async () => {
+    let cells;
+    cells = screen.getAllByTestId("cell");
     expect(cells[0]).not.toHaveClass("disabled");
     expect(cells[1]).not.toHaveClass("disabled");
     
@@ -46,4 +49,12 @@ describe("Component Cell", () => {
     expect(cells[1]).not.toHaveClass("disabled");
     expect(cells[1].childNodes.length).toEqual(0);
   });
+
+  // it("should correctly play sound when cell is clicked and sound is not disabled", () => {
+  //   const playSoundMock = vi.spyOn(Utils.prototype, "playSound").mockImplementation(() => {});    
+  //   const cells = screen.getAllByTestId("cell");
+  //   fireEvent.click(cells[0]);
+  //   screen.debug();
+  //   expect(playSoundMock).toHaveBeenCalled();
+  // });
 });

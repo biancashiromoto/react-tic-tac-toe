@@ -13,6 +13,7 @@ export const useGameState = () => {
     setGameOverMessage,
     cells,
     setCells,
+    setIsMuted
   } = useContext(context);
   const { setPlayerSymbol, isPlayer1Turn, setIsPlayer1Turn } = usePlayerState();
   const { _player1Symbol } = new Utils();
@@ -40,6 +41,10 @@ export const useGameState = () => {
     return `${isPlayer1Turn ? "player2" : "player1"}`;
   }
 
+  const toggleMute = () => {
+    setIsMuted(prevState => !prevState);
+  }
+
   return {
     isGameOver,
     setIsGameOver,
@@ -49,6 +54,7 @@ export const useGameState = () => {
     setGameOverMessage,
     resetGame,
     checkForTie,
-    addClassName
+    addClassName,
+    toggleMute
   };
 }
