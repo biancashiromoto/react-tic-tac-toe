@@ -8,7 +8,6 @@
   color: var(--white);
   font: 400 24px var(--bogaloo);
   padding: 10px 30px;
-  position: relative;
   transition: 300ms;
   margin: 0 auto;
 }

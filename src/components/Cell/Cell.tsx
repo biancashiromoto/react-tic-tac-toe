@@ -17,19 +17,28 @@ const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
   } = useCellState();
 
   return (
-    <div
-      className={`cell ${isDisabled && "disabled"}`}
-      data-testid="cell"
-      onClick={() => handleClick(index)}
-    >
+    <label
+      className="cell__label"
+      data-testid="cell__label"
+      htmlFor={`cell-${index}`}
+      >
+      {}
+      <input
+        checked={isDisabled}
+        className={`cell ${isDisabled && "disabled"}`}
+        data-testid="cell"
+        id={`cell-${index}`}
+        onChange={() => handleClick(index)}
+        type="checkbox"
+      />
       {cells[index] && (
-          <img
-            className="player-symbol"
-            src={cells[index] === _player2Symbol ? player2Symbol : player1Symbol}
-            alt={cells[index]}
-          />
-        )}
-    </div>
+              <img
+                className="player-symbol"
+                src={cells[index] === _player2Symbol ? player2Symbol : player1Symbol}
+                alt={cells[index]}
+              />
+            )}
+    </label>
   )
 }
 
