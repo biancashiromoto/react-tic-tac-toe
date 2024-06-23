@@ -77,3 +77,14 @@ h1::after {
     transform: scale(1);
   }
 }
+
+.game__container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.board-message__container {
+  position: relative;
+}
