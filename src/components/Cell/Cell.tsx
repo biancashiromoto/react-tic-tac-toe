@@ -18,7 +18,7 @@ const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
 
   return (
     <div
-      className={`cell flex items-center justify-center w-[75px] h-[75px] transition-all ${isDisabled ? "disabled" : "hover:bg-teal-900"} ${setupBorders(index)}`}
+      className={`cell flex items-center justify-center w-[75px] h-[75px] transition-all ${isDisabled ? "disabled" : "hover:bg-sky-900"} ${setupBorders(index)} `}
       data-testid="cell"
       onClick={() => handleClick(index)}
     >
