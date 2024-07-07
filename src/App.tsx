@@ -18,7 +18,7 @@ const App = () => {
       data-testid="app"
     >
       <Button.Root
-        className="toggle-mute__button left-2 top-2 z-10 text-2xl hover:bg-teal-900 p-3 rounded-full transition-all"
+        className="toggle-mute__button left-2 top-2 z-10 text-2xl hover:bg-teal-900 p-2 rounded-full transition-all mr-[85%] mt-[10px]"
         onClick={() => toggleMute()}
         dataTestId="toggle-mute__button"
         disabled={false}
