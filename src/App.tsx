@@ -9,7 +9,7 @@ import { GoMute, GoUnmute } from "react-icons/go";
 
 const App = () => {
   const { cells } = useCellState();
-  const { isGameOver, resetGame, toggleMute } = useGameState();
+  const { isGameOver, resetGame, toggleMute, hasGameStarted } = useGameState();
   const { isMuted } = useContext(context);
   
   return (
@@ -32,10 +32,10 @@ const App = () => {
       {!isGameOver && <PlayerDisplay />}
       <Board />
       <Button.Root
-        className={isGameOver ? 'pulse restart-game-button' : 'restart-game-button'}
+        className={`restart-game-button ${isGameOver && "animate-pulse"} ${hasGameStarted(cells) ? "bg-rose-400 pointer-events-none" : "bg-emerald-400 cursor-pointer"} p-4 rounded-3xl font-bogaloo transition-all`}
         onClick={() => resetGame()}
         dataTestId="restart-game-button"
-        disabled={cells.every(cell => cell === "")}
+        disabled={hasGameStarted(cells)}
       >
         <Button.Label label="Restart" />
       </Button.Root>
