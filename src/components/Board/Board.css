@@ -1,8 +1,0 @@
-@import url('../../App.css');
-
-.board {
-  animation: fade-in 0.5s ease-in forwards;
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  width: min-content;
-}

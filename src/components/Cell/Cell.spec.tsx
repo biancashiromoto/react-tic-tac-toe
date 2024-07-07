@@ -21,15 +21,14 @@ describe("Component Cell", () => {
     expect(screen.getByTestId("cell")).not.toHaveClass("disabled");
     fireEvent.click(screen.getByTestId("cell"));
     expect(screen.getByTestId("cell")).toHaveClass("disabled");
-    expect(screen.getByTestId("cell").nextElementSibling).toHaveAttribute("src", player1Symbol);
-    screen.debug()
+    expect(screen.getByTestId("cell").children[0]).toHaveAttribute("src", player1Symbol);
   });
   
   it("should not change if it is already disabled", () => {
     fireEvent.click(screen.getByTestId("cell"));
-    expect(screen.getByTestId("cell").nextElementSibling).toHaveAttribute("src", player1Symbol);
+    expect(screen.getByTestId("cell").children[0]).toHaveAttribute("src", player1Symbol);
     fireEvent.click(screen.getByTestId("cell"));
-    expect(screen.getByTestId("cell").nextElementSibling).toHaveAttribute("src", player1Symbol);
-    expect(screen.getByTestId("cell").nextElementSibling).not.toHaveAttribute("src", player2Symbol);
+    expect(screen.getByTestId("cell").children[0]).toHaveAttribute("src", player1Symbol);
+    expect(screen.getByTestId("cell").children[0]).not.toHaveAttribute("src", player2Symbol);
   });
 });

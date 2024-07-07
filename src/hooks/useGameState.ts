@@ -15,7 +15,7 @@ export const useGameState = () => {
     setCells,
     setIsMuted
   } = useContext(context);
-  const { setPlayerSymbol, isPlayer1Turn, setIsPlayer1Turn } = usePlayerState();
+  const { setPlayerSymbol, setIsPlayer1Turn } = usePlayerState();
   const { _player1Symbol } = new Utils();
 
   const resetGame = () => {
@@ -34,15 +34,19 @@ export const useGameState = () => {
     }
   }
 
-  const addClassName = () => {
+  const addClassName = (isPlayer1Turn: boolean): string => {
     if (isTie) {
-      return "tie";
+      return "bg-purple-500";
     }
-    return `${isPlayer1Turn ? "player2" : "player1"}`;
+    return `${isPlayer1Turn ? "bg-rose-500" : "bg-sky-700"}`;
   }
 
   const toggleMute = () => {
     setIsMuted(prevState => !prevState);
+  }
+
+  const hasGameStarted = (cells: string[]): boolean => {
+    return cells.every(cell => cell === "");
   }
 
   return {
@@ -55,6 +59,7 @@ export const useGameState = () => {
     resetGame,
     checkForTie,
     addClassName,
-    toggleMute
+    toggleMute,
+    hasGameStarted
   };
 }
