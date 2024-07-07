@@ -46,7 +46,7 @@ export const useGameState = () => {
   }
 
   const hasGameStarted = (cells: string[]): boolean => {
-    return cells.every(cell => cell === "");
+    return !cells.every(cell => cell === "");
   }
 
   return {
