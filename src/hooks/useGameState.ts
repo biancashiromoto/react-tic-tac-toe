@@ -36,9 +36,9 @@ export const useGameState = () => {
 
   const addClassName = () => {
     if (isTie) {
-      return "tie";
+      return "bg-purple-500";
     }
-    return `${isPlayer1Turn ? "player2" : "player1"}`;
+    return `${isPlayer1Turn ? "bg-blue-500" : "bg-red-500"}`;
   }
 
   const toggleMute = () => {
