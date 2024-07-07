@@ -6,6 +6,7 @@ import { useCellState, useGameState } from './hooks';
 import { context } from './context/context';
 import { Button } from './components/Button';
 import { GoMute, GoUnmute } from "react-icons/go";
+import "./App.css";
 
 const App = () => {
   const { cells } = useCellState();
@@ -14,7 +15,7 @@ const App = () => {
   
   return (
     <div
-      className="flex flex-col items-center justify-center gap-8 text-white"
+      className="flex flex-col items-center justify-start gap-12 text-white transition-all bg-teal-950 h-[100vh]"
       data-testid="app"
     >
       <Button.Root
@@ -28,18 +29,20 @@ const App = () => {
           icon={isMuted ? GoMute : GoUnmute}
         />
       </Button.Root>
-      <h1 className='text-5xl p-0'>Tic-tac-toe</h1>
-      {!isGameOver && <PlayerDisplay />}
-      <Board />
-      <Button.Root
-        className={`restart-game-button ${isGameOver && "animate-pulse"} ${hasGameStarted(cells) ? "bg-rose-400 pointer-events-none" : "bg-emerald-400 cursor-pointer"} p-4 rounded-3xl font-bogaloo transition-all`}
-        onClick={() => resetGame()}
-        dataTestId="restart-game-button"
-        disabled={hasGameStarted(cells)}
-      >
-        <Button.Label label="Restart" />
-      </Button.Root>
-      {isGameOver && <MessageContainer />}
+      <h1 className="text-5xl p-0 font-vibes flex items-center gap-4 uppercase">Tic-tac-toe</h1>
+      <div className="flex flex-col gap-14">
+        {!isGameOver && <PlayerDisplay />}
+        <Board />
+        <Button.Root
+          className={`restart-game-button ${isGameOver && "animate-pulse"} ${hasGameStarted(cells) ? "bg-rose-400 pointer-events-none" : "bg-emerald-400 cursor-pointer"} p-4 rounded-3xl font-londrina-solid w-[50%] mx-auto`}
+          onClick={() => resetGame()}
+          dataTestId="restart-game-button"
+          disabled={hasGameStarted(cells)}
+        >
+          <Button.Label label="Restart" />
+        </Button.Root>
+        {isGameOver && <MessageContainer />}
+      </div>
     </div>
   )
 }
