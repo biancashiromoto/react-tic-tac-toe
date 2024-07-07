@@ -15,11 +15,11 @@ const App = () => {
   
   return (
     <div
-      className="flex flex-col items-center justify-start gap-12 text-white transition-all bg-teal-950 h-[100vh]"
+      className="flex flex-col items-center justify-start gap-12 text-white transition-all bg-sky-950 h-[100vh]"
       data-testid="app"
     >
       <Button.Root
-        className="toggle-mute__button left-2 top-2 z-10 text-2xl hover:bg-teal-900 p-2 rounded-full transition-all mr-[85%] mt-[10px]"
+        className="toggle-mute__button left-2 top-2 z-10 text-2xl hover:bg-sky-900 p-2 rounded-full transition-all mr-[85%] mt-[10px]"
         onClick={() => toggleMute()}
         dataTestId="toggle-mute__button"
         disabled={false}
@@ -34,7 +34,7 @@ const App = () => {
         {!isGameOver && <PlayerDisplay />}
         <Board />
         <Button.Root
-          className={`restart-game-button ${isGameOver && "animate-pulse"} ${hasGameStarted(cells) ? "bg-rose-400 pointer-events-none" : "bg-emerald-400 cursor-pointer"} p-4 rounded-3xl font-londrina-solid w-[50%] mx-auto`}
+          className={`restart-game-button ${isGameOver && "animate-pulse"} ${hasGameStarted(cells) ? "bg-red-600 pointer-events-none" : "bg-green-600 cursor-pointer"} p-4 rounded-3xl font-londrina-solid w-[50%] mx-auto`}
           onClick={() => resetGame()}
           dataTestId="restart-game-button"
           disabled={hasGameStarted(cells)}
