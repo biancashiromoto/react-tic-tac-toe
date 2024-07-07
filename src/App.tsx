@@ -31,7 +31,7 @@ const App = () => {
       </Button.Root>
       <h1 className="text-5xl p-0 font-vibes flex items-center gap-4 uppercase">Tic-tac-toe</h1>
       <div className="flex flex-col gap-14">
-        {!isGameOver && <PlayerDisplay />}
+        <PlayerDisplay />
         <Board />
         <Button.Root
           className={`restart-game-button ${isGameOver && "animate-pulse"} ${hasGameStarted(cells) ? "bg-red-600 pointer-events-none" : "bg-green-600 cursor-pointer"} p-4 rounded-3xl font-londrina-solid w-[50%] mx-auto`}

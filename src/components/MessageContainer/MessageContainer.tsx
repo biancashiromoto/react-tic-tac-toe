@@ -7,7 +7,7 @@ const MessageContainer: React.FC = () => {
   
   return (
     <div
-        className={`message-container flex flex-col items-center justify-center rounded-3xl top-56 right-[50%] translate-x-2/4 absolute transition-all h-40 w-44 hover:scale-110 text-center ${addClassName(isPlayer1Turn)}`}
+        className={`message-container flex flex-col items-center justify-center rounded-3xl top-80 right-[50%] translate-x-2/4 absolute transition-all h-40 w-44 hover:scale-110 text-center ${addClassName(isPlayer1Turn)}`}
         data-testid="message-container"
       >
         <h2 className="font-londrina-solid font-semibold text-4xl">{gameOverMessage}</h2>
