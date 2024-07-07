@@ -1,5 +1,4 @@
 import React, { ElementType } from "react";
-import "./Button.css";
 
 interface ButtonIconProps {
   icon: ElementType;
