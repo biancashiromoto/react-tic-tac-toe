@@ -6,7 +6,7 @@ const Board: React.FC = () => {
 
   return (
     <div
-      className="board grid grid-cols-3 m-auto w-fit p-[75px]"
+      className="board grid grid-cols-3 w-fit"
       data-testid="board"
     >
       {_INITIAL_CELLS.map((_item, index) => (

@@ -14,11 +14,11 @@ const App = () => {
   
   return (
     <div
-      className="App"
+      className="flex flex-col items-center justify-center gap-8 text-white"
       data-testid="app"
     >
       <Button.Root
-        className="toggle-mute__button absolute left-2 top-2 z-10 text-2xl hover:bg-teal-900 p-3 rounded-full transition-all"
+        className="toggle-mute__button left-2 top-2 z-10 text-2xl hover:bg-teal-900 p-3 rounded-full transition-all"
         onClick={() => toggleMute()}
         dataTestId="toggle-mute__button"
         disabled={false}
@@ -28,7 +28,7 @@ const App = () => {
           icon={isMuted ? GoMute : GoUnmute}
         />
       </Button.Root>
-      <h1>Tic-tac-toe</h1>
+      <h1 className='text-5xl p-0'>Tic-tac-toe</h1>
       {!isGameOver && <PlayerDisplay />}
       <Board />
       <Button.Root
