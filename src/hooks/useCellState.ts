@@ -54,6 +54,7 @@ export const useCellState = () => {
 
   const handleClick = (index: number) => {
     if (isDisabled || cells[index] || gameOverMessage !== "") return;
+    
     updateCells(index);
     checkMove(cells);
     setIsDisabled(true);
@@ -62,5 +63,19 @@ export const useCellState = () => {
     }
   };
   
-  return { cells, setCells, updateCells, isDisabled, setIsDisabled, checkMove, handleClick };
+  const setupBorders = (index: number): string | undefined => {
+    const borderStyles : { [key: number]: string } = {
+      0: "border-r-2 border-b-2",
+      1: "border-r-2 border-b-2",
+      2: "border-b-2",
+      3: "border-r-2 border-b-2",
+      4: "border-r-2 border-b-2",
+      5: "border-b-2",
+      6: "border-r-2",
+      7: "border-r-2",
+    }
+    return borderStyles[index];
+  }
+  
+  return { cells, setCells, updateCells, isDisabled, setIsDisabled, checkMove, handleClick, setupBorders };
 }
