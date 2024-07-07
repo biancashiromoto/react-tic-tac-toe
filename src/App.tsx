@@ -7,7 +7,6 @@ import { context } from './context/context';
 import { Button } from './components/Button';
 import { GoMute, GoUnmute } from "react-icons/go";
 import "./App.css";
-import { COLORS } from './_variables';
 
 const App = () => {
   const { cells } = useCellState();
@@ -16,11 +15,11 @@ const App = () => {
   
   return (
     <div
-      className={`flex flex-col items-center justify-start gap-12 text-${COLORS.white} transition-all h-[100vh] ${COLORS.background}`}
+      className="flex flex-col items-center justify-start gap-12 text-white transition-all bg-sky-950 h-[100vh]"
       data-testid="app"
     >
       <Button.Root
-        className={`toggle-mute__button left-2 top-2 z-10 text-2xl hover:${COLORS.hover} p-2 rounded-full transition-all mr-[85%] mt-[10px]`}
+        className="toggle-mute__button left-2 top-2 z-10 text-2xl hover:bg-sky-900 p-2 rounded-full transition-all mr-[85%] mt-[10px]"
         onClick={() => toggleMute()}
         dataTestId="toggle-mute__button"
         disabled={false}
@@ -35,10 +34,10 @@ const App = () => {
         <PlayerDisplay />
         <Board />
         <Button.Root
-          className={`restart-game-button ${isGameOver && "animate-pulse"} ${hasGameStarted(cells) ? COLORS.restartButton.enabled : COLORS.restartButton.disabled} p-4 rounded-3xl font-londrina-solid w-[50%] mx-auto`}
+          className={`restart-game-button ${isGameOver && "animate-pulse"} ${hasGameStarted(cells) ? "bg-red-600 pointer-events-none" : "bg-green-600 cursor-pointer"} p-4 rounded-3xl font-londrina-solid w-[50%] mx-auto`}
           onClick={() => resetGame()}
           dataTestId="restart-game-button"
-          disabled={!hasGameStarted(cells)}
+          disabled={hasGameStarted(cells)}
         >
           <Button.Label label="Restart" />
         </Button.Root>
