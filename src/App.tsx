@@ -8,6 +8,7 @@ import { Button } from './components/Button';
 import { GoMute, GoUnmute } from "react-icons/go";
 import "./App.css";
 import { COLORS } from './__variables';
+import { TEXT } from './__text';
 
 const App = () => {
   const { cells } = useCellState();
@@ -30,7 +31,9 @@ const App = () => {
           icon={isMuted ? GoMute : GoUnmute}
         />
       </Button.Root>
-      <h1 className="text-5xl p-0 font-vibes flex items-center gap-4 uppercase">Tic-tac-toe</h1>
+      <h1 className="text-5xl p-0 font-vibes flex items-center gap-4 uppercase">
+        {TEXT.title}
+      </h1>
       <div className="flex flex-col gap-14">
         <PlayerDisplay />
         <Board />
@@ -40,7 +43,7 @@ const App = () => {
           dataTestId="restart-game-button"
           disabled={!hasGameStarted(cells)}
         >
-          <Button.Label label="Restart" />
+          <Button.Label label={TEXT.restartButton} />
         </Button.Root>
         {isGameOver && <MessageContainer />}
       </div>
