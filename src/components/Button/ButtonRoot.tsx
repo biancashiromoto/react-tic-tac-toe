@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import "./Button.css";
 
 interface ButtonRootProps {
   className?: string;
