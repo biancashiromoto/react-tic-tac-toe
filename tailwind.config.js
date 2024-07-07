@@ -22,7 +22,7 @@ export default {
       },
       fontFamily: {
         'londrina-solid': ['"Londrina Solid"', 'cursive'],
-        bogaloo: ['"Bogaloo"', 'cursive']
+        vibes: ['"Vibes"', 'cursive']
       },
     },
   },
