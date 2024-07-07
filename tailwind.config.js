@@ -15,6 +15,9 @@ export default {
       animation: {
         'fade-in': 'fade-in 0.5s ease-in forwards',
       },
+      fontFamily: {
+        'londrina-solid': ['"Londrina Solid"', 'cursive'],
+      },
     },
   },
   plugins: [],
