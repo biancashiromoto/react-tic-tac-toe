@@ -45,6 +45,10 @@ export const useGameState = () => {
     setIsMuted(prevState => !prevState);
   }
 
+  const hasGameStarted = (cells: string[]): boolean => {
+    return cells.every(cell => cell === "");
+  }
+
   return {
     isGameOver,
     setIsGameOver,
@@ -55,6 +59,7 @@ export const useGameState = () => {
     resetGame,
     checkForTie,
     addClassName,
-    toggleMute
+    toggleMute,
+    hasGameStarted
   };
 }
