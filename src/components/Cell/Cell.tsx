@@ -16,13 +16,13 @@ const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
 
   return (
     <div
-      className={`cell flex items-center justify-center w-[75px] h-[75px] transition-all ${isDisabled ? "disabled" : COLORS.hover} ${setupBorders(index)} `}
+      className={`flex items-center justify-center w-[75px] h-[75px] transition-all ${isDisabled ? "disabled" : COLORS.hover} ${setupBorders(index)} `}
       data-testid={TEST_IDS.cell}
       onClick={() => handleClick(index)}
     >
       {cells[index] && (
           <img
-            className={`player-symbol animation-fade-in w-12 ${isDisabled && "pointer-events-none"}`}
+            className={`animation-fade-in w-12 ${isDisabled && "pointer-events-none"}`}
             src={cells[index] === TEXT.player2Symbol ? player2Symbol : player1Symbol}
             alt={cells[index]}
           />

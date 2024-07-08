@@ -21,13 +21,12 @@ const App = () => {
       data-testid="app"
     >
       <Button.Root
-        className={`toggle-mute__button left-2 top-2 z-10 text-2xl ${COLORS.hover} p-2 rounded-full transition-all mr-[85%] mt-[10px]`}
+        className={`left-2 top-2 z-10 text-2xl ${COLORS.hover} p-2 rounded-full transition-all mr-[85%] mt-[10px]`}
         onClick={() => toggleMute()}
         dataTestId={TEST_IDS.buttons.toggleMute}
         disabled={false}
       >
         <Button.Icon
-          className="toggle-mute__button--icon"
           icon={isMuted ? GoMute : GoUnmute}
         />
       </Button.Root>
@@ -38,7 +37,7 @@ const App = () => {
         <PlayerDisplay />
         <Board />
         <Button.Root
-          className={`restart-game-button ${isGameOver && "animate-pulse"} ${hasGameStarted(cells) ? COLORS.restartButton.enabled : COLORS.restartButton.disabled} p-4 rounded-3xl font-londrina-solid w-[50%] mx-auto`}
+          className={`${isGameOver && "animate-pulse"} ${hasGameStarted(cells) ? COLORS.restartButton.enabled : COLORS.restartButton.disabled} p-4 rounded-3xl font-londrina-solid w-[50%] mx-auto`}
           onClick={() => resetGame()}
           dataTestId={TEST_IDS.buttons.restartGame}
           disabled={!hasGameStarted(cells)}
