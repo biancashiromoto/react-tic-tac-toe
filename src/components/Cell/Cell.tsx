@@ -3,7 +3,7 @@ import player1Symbol from '../../assets/img/o-item.png';
 import player2Symbol from '../../assets/img/x-item.png';
 import { CellPropsInterface } from '../../interfaces/Interfaces';
 import { useCellState } from '../../hooks';
-import { COLORS } from './../../__variables';
+import { COLORS, TEST_IDS } from './../../__variables';
 import { TEXT } from '../../__text';
 
 const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
@@ -17,7 +17,7 @@ const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
   return (
     <div
       className={`cell flex items-center justify-center w-[75px] h-[75px] transition-all ${isDisabled ? "disabled" : COLORS.hover} ${setupBorders(index)} `}
-      data-testid="cell"
+      data-testid={TEST_IDS.cell}
       onClick={() => handleClick(index)}
     >
       {cells[index] && (

@@ -3,6 +3,7 @@ import player1Symbol from '../../assets/img/o-item.png';
 import player2Symbol from '../../assets/img/x-item.png';
 import { usePlayerState } from '../../hooks';
 import { TEXT } from '../../__text';
+import { TEST_IDS } from '../../__variables';
 
 const PlayerDisplay: React.FC = () => {
   const { isPlayer1Turn } = usePlayerState();
@@ -10,7 +11,7 @@ const PlayerDisplay: React.FC = () => {
   return (
     <div
         className="player-display-container flex gap-4 items-center justify-center"
-        data-testid="player-display-container"
+        data-testid={TEST_IDS.playerDisplay}
       >
         <img
           src={ isPlayer1Turn ? player1Symbol : player2Symbol }

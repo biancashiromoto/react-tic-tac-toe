@@ -7,7 +7,7 @@ import { context } from './context/context';
 import { Button } from './components/Button';
 import { GoMute, GoUnmute } from "react-icons/go";
 import "./App.css";
-import { COLORS } from './__variables';
+import { COLORS, TEST_IDS } from './__variables';
 import { TEXT } from './__text';
 
 const App = () => {
@@ -23,7 +23,7 @@ const App = () => {
       <Button.Root
         className={`toggle-mute__button left-2 top-2 z-10 text-2xl ${COLORS.hover} p-2 rounded-full transition-all mr-[85%] mt-[10px]`}
         onClick={() => toggleMute()}
-        dataTestId="toggle-mute__button"
+        dataTestId={TEST_IDS.buttons.toggleMute}
         disabled={false}
       >
         <Button.Icon
@@ -40,7 +40,7 @@ const App = () => {
         <Button.Root
           className={`restart-game-button ${isGameOver && "animate-pulse"} ${hasGameStarted(cells) ? COLORS.restartButton.enabled : COLORS.restartButton.disabled} p-4 rounded-3xl font-londrina-solid w-[50%] mx-auto`}
           onClick={() => resetGame()}
-          dataTestId="restart-game-button"
+          dataTestId={TEST_IDS.buttons.restartGame}
           disabled={!hasGameStarted(cells)}
         >
           <Button.Label label={TEXT.restartButton} />
