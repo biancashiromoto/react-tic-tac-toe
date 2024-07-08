@@ -10,7 +10,7 @@ export const usePlayerState = () => {
     setPlayerSymbol
   } = useContext(context);
 
-  const switchPlayer = () => {
+  const switchPlayer = (): void => {
     setIsPlayer1Turn(prevState => !prevState);
     setPlayerSymbol(prevState => prevState === TEXT.player1Symbol ? TEXT.player2Symbol : TEXT.player1Symbol);
   };

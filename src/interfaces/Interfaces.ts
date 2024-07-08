@@ -18,3 +18,41 @@ export interface ContextProps {
   isMuted: boolean,
   setIsMuted: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+export interface ColorsInterface {
+  background: string;
+  hover: string;
+  restartButton: {
+    enabled: string;
+    disabled: string;
+  };
+  gameOverMessageContainer: {
+    player1: string,
+    player2: string,
+    tie: string,
+  }
+}
+
+export interface TestIdsInterface {
+  board: string,
+  buttons: {
+    toggleMute: string,
+    restartGame: string,
+  },
+  cell: string,
+  messageContainer: string,
+  playerDisplay: string
+}
+
+export interface TextInterface {
+  title: string;
+  player1: string;
+  player1Symbol: string;
+  player2: string;
+  player2Symbol: string;
+  restartButton: string;
+  gameOverMessage: {
+    wins: string,
+    tie: string
+  }
+}

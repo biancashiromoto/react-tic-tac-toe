@@ -1,6 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import App from "./App";
 import Provider from "./context/Provider";
+import { TEST_IDS } from "./__variables";
+import { TEXT } from "./__text";
 
 describe("Component App", () => {
   beforeEach(() => {
@@ -12,10 +14,10 @@ describe("Component App", () => {
   });
 
   it("should initially contain the components Board, PlayerDisplay and Button and a title", () => {
-    expect(screen.getByTestId("board")).toBeInTheDocument();
-    expect(screen.getByTestId("restart-game-button")).toBeInTheDocument();
-    expect(screen.getByTestId("player-display-container")).toBeInTheDocument();
-    expect(screen.queryByTestId("message-container")).not.toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /tic-tac-toe/i })).toBeInTheDocument();
+    expect(screen.getByTestId(TEST_IDS.board)).toBeInTheDocument();
+    expect(screen.getByTestId(TEST_IDS.buttons.restartGame)).toBeInTheDocument();
+    expect(screen.getByTestId(TEST_IDS.playerDisplay)).toBeInTheDocument();
+    expect(screen.queryByTestId(TEST_IDS.messageContainer)).not.toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: TEXT.title })).toBeInTheDocument();
   });
 });

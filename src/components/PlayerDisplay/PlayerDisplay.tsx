@@ -10,13 +10,13 @@ const PlayerDisplay: React.FC = () => {
 
   return (
     <div
-        className="player-display-container flex gap-4 items-center justify-center"
+        className="flex gap-4 items-center justify-center"
         data-testid={TEST_IDS.playerDisplay}
       >
         <img
           src={ isPlayer1Turn ? player1Symbol : player2Symbol }
           alt={ isPlayer1Turn ? TEXT.player1Symbol : TEXT.player2Symbol }
-          className="player-img-display w-[35px]"
+          className="w-[35px]"
         />
         <h3 className="font-semibold text-3xl font-londrina-solid">{isPlayer1Turn ? TEXT.player1 : TEXT.player2}</h3>
       </div>
