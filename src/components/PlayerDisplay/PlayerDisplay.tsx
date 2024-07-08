@@ -2,8 +2,7 @@ import React from 'react';
 import player1Symbol from '../../assets/img/o-item.png';
 import player2Symbol from '../../assets/img/x-item.png';
 import { usePlayerState } from '../../hooks';
-import { TEXT } from '../../__text';
-import { TEST_IDS } from '../../__variables';
+import { TEST_IDS, TEXT } from '../../__variables';
 
 const PlayerDisplay: React.FC = () => {
   const { isPlayer1Turn } = usePlayerState();

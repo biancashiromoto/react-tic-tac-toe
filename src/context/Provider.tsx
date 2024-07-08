@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Utils } from '../utils/utils';
 import { context } from './context';
 import { ContextProps } from '../interfaces/Interfaces';
-import { TEXT } from '../__text';
+import { TEXT } from '../__variables';
 
 const {
   _INITIAL_CELLS,
