@@ -4,6 +4,7 @@ import { usePlayerState } from "./usePlayerState";
 import { useGameState } from "./useGameState";
 import { Utils } from "../utils/utils";
 import soundPath from "../assets/sounds/click.mp3";
+import { TEXT } from "../__text";
 
 const { _winningOptions, playSound } = new Utils();
 export const useCellState = () => {
@@ -46,7 +47,7 @@ export const useCellState = () => {
       if (cells[x] && cells[x] === cells[y] && cells[x] === cells[z]) {
         setIsGameOver(true),
         setIsTie(false),
-        setGameOverMessage(isPlayer1Turn ? 'Player 1 wins!' : 'Player 2 wins!')
+        setGameOverMessage(`${isPlayer1Turn ? TEXT.player1 : TEXT.player2} ${TEXT.gameOverMessage.wins}`)
       }
     }
     switchPlayer();
