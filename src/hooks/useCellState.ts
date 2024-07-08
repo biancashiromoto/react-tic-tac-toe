@@ -24,7 +24,7 @@ export const useCellState = () => {
     checkForTie,
   } = useGameState();
   
-  const updateCells = (index: number) => {
+  const updateCells = (index: number): void => {
     cells[index] = playerSymbol;
     setCells(prevCells => {
       const newCells = [...prevCells];
@@ -53,7 +53,7 @@ export const useCellState = () => {
     switchPlayer();
   };
 
-  const handleClick = (index: number) => {
+  const handleClick = (index: number): void => {
     if (isDisabled || cells[index] || gameOverMessage !== "") return;
     
     updateCells(index);

@@ -1,15 +1,4 @@
-interface TextInterface {
-  title: string;
-  player1: string;
-  player1Symbol: string;
-  player2: string;
-  player2Symbol: string;
-  restartButton: string;
-  gameOverMessage: {
-    wins: string,
-    tie: string
-  }
-}
+import { TextInterface } from "./interfaces/Interfaces";
 
 export const TEXT: TextInterface = {
   title: "tic-tac-toe",

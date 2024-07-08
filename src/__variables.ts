@@ -1,16 +1,5 @@
-interface ColorsInterface {
-  background: string;
-  hover: string;
-  restartButton: {
-    enabled: string;
-    disabled: string;
-  };
-  gameOverMessageContainer: {
-    player1: string,
-    player2: string,
-    tie: string,
-  }
-}
+import { ColorsInterface, TestIdsInterface } from "./interfaces/Interfaces";
+
 
 export const COLORS: ColorsInterface = {
   background: "bg-sky-950",
@@ -26,7 +15,7 @@ export const COLORS: ColorsInterface = {
   },
 };
 
-export const TEST_IDS = {
+export const TEST_IDS: TestIdsInterface = {
   board: "board",
   buttons: {
     toggleMute: "toggle-mute__button",
