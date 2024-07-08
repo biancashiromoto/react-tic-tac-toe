@@ -18,7 +18,7 @@ export const useGameState = () => {
   } = useContext(context);
   const { setPlayerSymbol, setIsPlayer1Turn } = usePlayerState();
 
-  const resetGame = () => {
+  const resetGame = (): void => {
     setGameOverMessage(""),
     setIsGameOver(false),
     setPlayerSymbol(TEXT.player1Symbol),
@@ -26,7 +26,7 @@ export const useGameState = () => {
     setIsPlayer1Turn(true)
   }
 
-  const checkForTie = () => {
+  const checkForTie = (): void => {
     if (cells.every((cell) => cell !== "")) {
       setIsGameOver(true),
       setGameOverMessage(TEXT.gameOverMessage.tie),
@@ -41,7 +41,7 @@ export const useGameState = () => {
     return `${isPlayer1Turn ? COLORS.gameOverMessageContainer.player2 : COLORS.gameOverMessageContainer.player1 }`;
   }
 
-  const toggleMute = () => {
+  const toggleMute = (): void => {
     setIsMuted(prevState => !prevState);
   }
 
