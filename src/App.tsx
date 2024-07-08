@@ -6,37 +6,45 @@ import { useCellState, useGameState } from './hooks';
 import { context } from './context/context';
 import { Button } from './components/Button';
 import { GoMute, GoUnmute } from "react-icons/go";
+import "./App.css";
+import { COLORS, TEST_IDS, TEXT } from './__variables';
 
 const App = () => {
   const { cells } = useCellState();
-  const { isGameOver, resetGame } = useGameState();
-  const { isMuted, setIsMuted } = useContext(context);
+  const { isGameOver, resetGame, toggleMute, hasGameStarted } = useGameState();
+  const { isMuted } = useContext(context);
   
   return (
     <div
-      className="App"
+      className={`flex flex-col items-center justify-start gap-12 text-white transition-all ${COLORS.background} h-[100vh]`}
       data-testid="app"
     >
       <Button.Root
-        className="toggle-mute-button"
-        onClick={() => setIsMuted(prevState => !prevState)}
-        dataTestId="toggle-mute-button"
+        className={`left-2 top-2 z-10 text-2xl ${COLORS.hover} p-2 rounded-full transition-all mr-[85%] mt-[10px]`}
+        onClick={() => toggleMute()}
+        dataTestId={TEST_IDS.buttons.toggleMute}
         disabled={false}
       >
-        <Button.Icon icon={isMuted ? GoMute : GoUnmute} />
+        <Button.Icon
+          icon={isMuted ? GoMute : GoUnmute}
+        />
       </Button.Root>
-      <h1>Tic-tac-toe</h1>
-      {!isGameOver && <PlayerDisplay />}
-      <Board />
-      <Button.Root
-        className={isGameOver ? 'pulse restart-game-button' : 'restart-game-button'}
-        onClick={() => resetGame()}
-        dataTestId="restart-game-button"
-        disabled={cells.every(cell => cell === "")}
-      >
-        <Button.Label label="Restart" />
-      </Button.Root>
-      {isGameOver && <MessageContainer />}
+      <h1 className="text-5xl p-0 font-vibes flex items-center gap-4 uppercase">
+        {TEXT.title}
+      </h1>
+      <div className="flex flex-col gap-14">
+        <PlayerDisplay />
+        <Board />
+        <Button.Root
+          className={`${isGameOver && "animate-pulse"} ${hasGameStarted(cells) ? COLORS.restartButton.enabled : COLORS.restartButton.disabled} p-4 rounded-3xl font-londrina-solid w-[50%] mx-auto`}
+          onClick={() => resetGame()}
+          dataTestId={TEST_IDS.buttons.restartGame}
+          disabled={!hasGameStarted(cells)}
+        >
+          <Button.Label label={TEXT.restartButton} />
+        </Button.Root>
+        {isGameOver && <MessageContainer />}
+      </div>
     </div>
   )
 }

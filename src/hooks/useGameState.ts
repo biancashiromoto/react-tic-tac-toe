@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { context } from "../context/context"
 import { usePlayerState } from "./usePlayerState";
-import { Utils } from "../utils/utils";
+import { COLORS, TEXT } from "../__variables";
 
 export const useGameState = () => {
   const { 
@@ -13,31 +13,39 @@ export const useGameState = () => {
     setGameOverMessage,
     cells,
     setCells,
+    setIsMuted
   } = useContext(context);
-  const { setPlayerSymbol, isPlayer1Turn, setIsPlayer1Turn } = usePlayerState();
-  const { _player1Symbol } = new Utils();
+  const { setPlayerSymbol, setIsPlayer1Turn } = usePlayerState();
 
-  const resetGame = () => {
+  const resetGame = (): void => {
     setGameOverMessage(""),
     setIsGameOver(false),
-    setPlayerSymbol(_player1Symbol),
+    setPlayerSymbol(TEXT.player1Symbol),
     setCells(new Array(9).fill("")),
     setIsPlayer1Turn(true)
   }
 
-  const checkForTie = () => {
+  const checkForTie = (): void => {
     if (cells.every((cell) => cell !== "")) {
       setIsGameOver(true),
-      setGameOverMessage("Tie!"),
+      setGameOverMessage(TEXT.gameOverMessage.tie),
       setIsTie(true);
     }
   }
 
-  const addClassName = () => {
+  const addClassName = (isPlayer1Turn: boolean): string => {
     if (isTie) {
-      return "tie";
+      return COLORS.gameOverMessageContainer.tie;
     }
-    return `${isPlayer1Turn ? "player2" : "player1"}`;
+    return `${isPlayer1Turn ? COLORS.gameOverMessageContainer.player2 : COLORS.gameOverMessageContainer.player1 }`;
+  }
+
+  const toggleMute = (): void => {
+    setIsMuted(prevState => !prevState);
+  }
+
+  const hasGameStarted = (cells: string[]): boolean => {
+    return !cells.every(cell => cell === "");
   }
 
   return {
@@ -49,6 +57,8 @@ export const useGameState = () => {
     setGameOverMessage,
     resetGame,
     checkForTie,
-    addClassName
+    addClassName,
+    toggleMute,
+    hasGameStarted
   };
 }

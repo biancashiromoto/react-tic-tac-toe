@@ -1,49 +1,35 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import App from "../../App";
 import Provider from "../../context/Provider";
 import player1Symbol from "../../assets/img/o-item.png";
 import player2Symbol from "../../assets/img/x-item.png";
-import { Utils } from "../../utils/utils";
+import Cell from "./Cell";
+import { TEST_IDS } from "../../__variables";
 
-let cells: Element[];
 describe("Component Cell", () => {
-  const {
-    _player1Symbol,
-    _player2Symbol,
-  } = new Utils();
-
   beforeEach(() => {
-    const { getAllByTestId } = render(
-          <Provider>
-            <App />
-          </Provider>);
-    cells = getAllByTestId("cell");
+    render(
+      <Provider>
+        <Cell index={0} />
+      </Provider>
+    );
   });
-
-  afterEach(() => fireEvent.click(screen.getByTestId("restart-game-button")));
   
-  it("should correctly be restored when game is restarted", async () => {    
-    expect(cells[0]).not.toHaveClass("disabled");
-    expect(cells[1]).not.toHaveClass("disabled");
-    
-    fireEvent.click(cells[0]);
-    expect(screen.getByText(/player 2/i)).toBeInTheDocument();
-    expect(cells[0]).toHaveClass("disabled");
-    expect(cells[0].firstChild).toHaveAttribute("src", player1Symbol);
-    expect(cells[0].firstChild).toHaveAttribute("alt", _player1Symbol);
-
-    fireEvent.click(cells[1]);
-    expect(screen.getByText(/player 1/i)).toBeInTheDocument();
-    expect(cells[1]).toHaveClass("disabled");
-    expect(cells[1].firstChild).toHaveAttribute("src", player2Symbol);
-    expect(cells[1].firstChild).toHaveAttribute("alt", _player2Symbol);
-    
-    fireEvent.click(screen.getByTestId("restart-game-button"));
-    cells = screen.getAllByTestId("cell");
-    expect(screen.getByText(/player 1/i)).toBeInTheDocument();
-    expect(cells[0]).not.toHaveClass("disabled");
-    expect(cells[0].childNodes.length).toEqual(0);
-    expect(cells[1]).not.toHaveClass("disabled");
-    expect(cells[1].childNodes.length).toEqual(0);
+  it("should be correctly rendered", () => {
+    expect(screen.getByTestId(TEST_IDS.cell)).toBeInTheDocument();
+  });
+  
+  it("should correctly handle click", () => {
+    expect(screen.getByTestId(TEST_IDS.cell)).not.toHaveClass("disabled");
+    fireEvent.click(screen.getByTestId(TEST_IDS.cell));
+    expect(screen.getByTestId(TEST_IDS.cell)).toHaveClass("disabled");
+    expect(screen.getByTestId(TEST_IDS.cell).children[0]).toHaveAttribute("src", player1Symbol);
+  });
+  
+  it("should not change if it is already disabled", () => {
+    fireEvent.click(screen.getByTestId(TEST_IDS.cell));
+    expect(screen.getByTestId(TEST_IDS.cell).children[0]).toHaveAttribute("src", player1Symbol);
+    fireEvent.click(screen.getByTestId(TEST_IDS.cell));
+    expect(screen.getByTestId(TEST_IDS.cell).children[0]).toHaveAttribute("src", player1Symbol);
+    expect(screen.getByTestId(TEST_IDS.cell).children[0]).not.toHaveAttribute("src", player2Symbol);
   });
 });

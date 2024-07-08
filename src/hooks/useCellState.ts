@@ -4,6 +4,7 @@ import { usePlayerState } from "./usePlayerState";
 import { useGameState } from "./useGameState";
 import { Utils } from "../utils/utils";
 import soundPath from "../assets/sounds/click.mp3";
+import { TEXT } from "../__variables";
 
 const { _winningOptions, playSound } = new Utils();
 export const useCellState = () => {
@@ -12,6 +13,7 @@ export const useCellState = () => {
     setCells,
     isGameOver,
     isMuted,
+    gameOverMessage
   } = useContext(context);
   const { playerSymbol, switchPlayer, isPlayer1Turn } = usePlayerState();
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
@@ -22,7 +24,7 @@ export const useCellState = () => {
     checkForTie,
   } = useGameState();
   
-  const updateCells = (index: number) => {
+  const updateCells = (index: number): void => {
     cells[index] = playerSymbol;
     setCells(prevCells => {
       const newCells = [...prevCells];
@@ -45,14 +47,15 @@ export const useCellState = () => {
       if (cells[x] && cells[x] === cells[y] && cells[x] === cells[z]) {
         setIsGameOver(true),
         setIsTie(false),
-        setGameOverMessage(isPlayer1Turn ? 'Player 1 wins!' : 'Player 2 wins!')
+        setGameOverMessage(`${isPlayer1Turn ? TEXT.player1 : TEXT.player2} ${TEXT.gameOverMessage.wins}`)
       }
     }
     switchPlayer();
   };
 
-  const handleClick = (index: number) => {
-    if (isDisabled || cells[index]) return;
+  const handleClick = (index: number): void => {
+    if (isDisabled || cells[index] || gameOverMessage !== "") return;
+    
     updateCells(index);
     checkMove(cells);
     setIsDisabled(true);
@@ -61,5 +64,19 @@ export const useCellState = () => {
     }
   };
   
-  return { cells, setCells, updateCells, isDisabled, setIsDisabled, checkMove, handleClick };
+  const setupBorders = (index: number): string | undefined => {
+    const borderStyles : { [key: number]: string } = {
+      0: "border-r-2 border-b-2",
+      1: "border-r-2 border-b-2",
+      2: "border-b-2",
+      3: "border-r-2 border-b-2",
+      4: "border-r-2 border-b-2",
+      5: "border-b-2",
+      6: "border-r-2",
+      7: "border-r-2",
+    }
+    return borderStyles[index];
+  }
+  
+  return { cells, setCells, updateCells, isDisabled, setIsDisabled, checkMove, handleClick, setupBorders };
 }

@@ -1,13 +1,8 @@
 import { useContext } from "react"
 import { context } from "../context/context"
-import { Utils } from "../utils/utils";
+import { TEXT } from "../__variables";
 
 export const usePlayerState = () => {
-  const {
-    _player1Symbol,
-    _player2Symbol,
-  } = new Utils();
-
   const { 
     isPlayer1Turn,
     setIsPlayer1Turn,
@@ -15,9 +10,9 @@ export const usePlayerState = () => {
     setPlayerSymbol
   } = useContext(context);
 
-  const switchPlayer = () => {
+  const switchPlayer = (): void => {
     setIsPlayer1Turn(prevState => !prevState);
-    setPlayerSymbol(prevState => prevState === _player1Symbol ? _player2Symbol : _player1Symbol);
+    setPlayerSymbol(prevState => prevState === TEXT.player1Symbol ? TEXT.player2Symbol : TEXT.player1Symbol);
   };
 
   return { 
