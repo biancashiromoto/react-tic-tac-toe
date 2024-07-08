@@ -10,7 +10,6 @@ interface ColorsInterface {
     player2: string,
     tie: string,
   }
-  white: string;
 }
 
 export const COLORS: ColorsInterface = {
@@ -25,5 +24,15 @@ export const COLORS: ColorsInterface = {
     player2: "bg-rose-500" ,
     tie: "bg-purple-500"
   },
-  white: "white",
 };
+
+export const TEST_IDS = {
+  board: "board",
+  buttons: {
+    toggleMute: "toggle-mute__button",
+    restartGame: "restart-game__button",
+  },
+  cell: "cell",
+  messageContainer: "message-container",
+  playerDisplay: "player-display"
+}
