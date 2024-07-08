@@ -3,7 +3,7 @@ import Provider from "../../context/Provider";
 import { Button } from "./";
 import { vi } from "vitest";
 import { GoUnmute } from "react-icons/go";
-import { TEXT } from "../../__text";
+import { TEXT } from "../../__variables";
 
 describe("Component Button", () => {
   describe("Restart game button", () => {

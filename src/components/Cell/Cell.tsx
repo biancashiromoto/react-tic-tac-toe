@@ -3,8 +3,7 @@ import player1Symbol from '../../assets/img/o-item.png';
 import player2Symbol from '../../assets/img/x-item.png';
 import { CellPropsInterface } from '../../interfaces/Interfaces';
 import { useCellState } from '../../hooks';
-import { COLORS, TEST_IDS } from './../../__variables';
-import { TEXT } from '../../__text';
+import { COLORS, TEST_IDS, TEXT } from './../../__variables';
 
 const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
   const {

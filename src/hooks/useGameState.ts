@@ -1,8 +1,7 @@
 import { useContext } from "react"
 import { context } from "../context/context"
 import { usePlayerState } from "./usePlayerState";
-import { TEXT } from "../__text";
-import { COLORS } from "../__variables";
+import { COLORS, TEXT } from "../__variables";
 
 export const useGameState = () => {
   const { 

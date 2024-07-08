@@ -4,7 +4,7 @@ import { usePlayerState } from "./usePlayerState";
 import { useGameState } from "./useGameState";
 import { Utils } from "../utils/utils";
 import soundPath from "../assets/sounds/click.mp3";
-import { TEXT } from "../__text";
+import { TEXT } from "../__variables";
 
 const { _winningOptions, playSound } = new Utils();
 export const useCellState = () => {

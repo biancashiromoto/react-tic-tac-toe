@@ -3,8 +3,7 @@ import App from "../../App";
 import Provider from "../../context/Provider";
 import player1Symbol from '../../assets/img/o-item.png';
 import player2Symbol from '../../assets/img/x-item.png';
-import { TEST_IDS } from "../../__variables";
-import { TEXT } from "../../__text";
+import { TEST_IDS, TEXT } from "../../__variables";
 
 
 let cells: Element[];

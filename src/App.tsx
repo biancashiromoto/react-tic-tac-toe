@@ -7,8 +7,7 @@ import { context } from './context/context';
 import { Button } from './components/Button';
 import { GoMute, GoUnmute } from "react-icons/go";
 import "./App.css";
-import { COLORS, TEST_IDS } from './__variables';
-import { TEXT } from './__text';
+import { COLORS, TEST_IDS, TEXT } from './__variables';
 
 const App = () => {
   const { cells } = useCellState();
