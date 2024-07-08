@@ -1,7 +1,8 @@
 import { useContext } from "react"
 import { context } from "../context/context"
 import { usePlayerState } from "./usePlayerState";
-import { Utils } from "../utils/utils";
+import { TEXT } from "../__text";
+import { COLORS } from "../__variables";
 
 export const useGameState = () => {
   const { 
@@ -16,12 +17,11 @@ export const useGameState = () => {
     setIsMuted
   } = useContext(context);
   const { setPlayerSymbol, setIsPlayer1Turn } = usePlayerState();
-  const { _player1Symbol } = new Utils();
 
   const resetGame = () => {
     setGameOverMessage(""),
     setIsGameOver(false),
-    setPlayerSymbol(_player1Symbol),
+    setPlayerSymbol(TEXT.player1Symbol),
     setCells(new Array(9).fill("")),
     setIsPlayer1Turn(true)
   }
@@ -29,16 +29,16 @@ export const useGameState = () => {
   const checkForTie = () => {
     if (cells.every((cell) => cell !== "")) {
       setIsGameOver(true),
-      setGameOverMessage("Tie!"),
+      setGameOverMessage(TEXT.gameOverMessage.tie),
       setIsTie(true);
     }
   }
 
   const addClassName = (isPlayer1Turn: boolean): string => {
     if (isTie) {
-      return "bg-purple-500";
+      return COLORS.gameOverMessageContainer.tie;
     }
-    return `${isPlayer1Turn ? "bg-rose-500" : "bg-sky-700"}`;
+    return `${isPlayer1Turn ? COLORS.gameOverMessageContainer.player2 : COLORS.gameOverMessageContainer.player1 }`;
   }
 
   const toggleMute = () => {

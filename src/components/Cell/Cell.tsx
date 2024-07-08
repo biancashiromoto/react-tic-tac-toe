@@ -2,14 +2,11 @@ import React from 'react';
 import player1Symbol from '../../assets/img/o-item.png';
 import player2Symbol from '../../assets/img/x-item.png';
 import { CellPropsInterface } from '../../interfaces/Interfaces';
-import { Utils } from '../../utils/utils';
 import { useCellState } from '../../hooks';
 import { COLORS } from './../../__variables';
+import { TEXT } from '../../__text';
 
 const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
-  const {
-    _player2Symbol,
-  } = new Utils();
   const {
     cells,
     isDisabled,
@@ -26,7 +23,7 @@ const Cell: React.FC<CellPropsInterface> = ({ index }: CellPropsInterface) => {
       {cells[index] && (
           <img
             className={`player-symbol animation-fade-in w-12 ${isDisabled && "pointer-events-none"}`}
-            src={cells[index] === _player2Symbol ? player2Symbol : player1Symbol}
+            src={cells[index] === TEXT.player2Symbol ? player2Symbol : player1Symbol}
             alt={cells[index]}
           />
         )}
